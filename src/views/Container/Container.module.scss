@@ -1,0 +1,17 @@
+.container {
+  max-width: var(--container-width);
+  padding-inline: var(--padding-base);
+  margin: 0 auto;
+
+  @media (min-width: 580px) {
+    padding-inline: 29px;
+  }
+
+  @media (min-width: 820px) {
+    padding-inline: 43px;
+  }
+
+  @media (min-width: 1120px) {
+    padding-inline: 92px;
+  }
+}
