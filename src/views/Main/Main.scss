@@ -1,0 +1,12 @@
+main {
+  padding-bottom: 80px;
+  flex-grow: 1;
+
+  @media (min-width: 580px) {
+    padding-bottom: 100px;
+  }
+
+  @media (min-width: 920px) {
+    padding-bottom: 100px;
+  }
+}
