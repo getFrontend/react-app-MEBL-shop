@@ -1,0 +1,47 @@
+.header {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-gray);
+  margin-bottom: 24px;
+
+  &__container {
+    display: grid;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-areas:
+      'logo navigation'
+      'search search';
+
+    @media (min-width: 820px) {
+      grid-template-areas: 'logo search navigation';
+      grid-template-columns: 94px 1fr auto;
+    }
+  }
+
+  &__logo {
+    grid-area: logo;
+    width: 94px;
+    height: 25px;
+  }
+
+  &__search {
+    grid-area: search;
+    position: relative;
+    width: 100%;
+
+    @media (min-width: 820px) {
+      max-width: 408px;
+      justify-self: center;
+    }
+
+    @media (min-width: 1120px) {
+      max-width: 514px;
+    }
+  }
+
+  &__navigation {
+    grid-area: navigation;
+    justify-self: end;
+  }
+}
