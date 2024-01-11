@@ -1,0 +1,43 @@
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__phone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+    @media (min-width: 820px) {
+      gap: 10px;
+    }
+  }
+
+  // &__item {
+  // }
+
+  &__link {
+
+    & svg {
+      width: 36px;
+      height: 36px;
+      transition: transform 0.2s ease-in-out;
+
+      @media (min-width: 820px) {
+        width: 30px;
+        height: 30px;
+      }
+
+      &:hover {
+        transform: translateY(-3px);
+      }
+    }
+  }
+}
