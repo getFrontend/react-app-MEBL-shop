@@ -31,8 +31,13 @@
   --font-main: "Open Sans", sans-serif;
   --font-secondary: "Inter", sans-serif;
 
-  --color-bg: #fff;
+  --color-light: #EEEFF2;
   --color-dark: #1c1c1c;
+  --color-white: #fff;
+  --color-gray: #EEEFF2;
+  --color-gray-dark: #969EAE;
+  --color-violet: #780096;
+  --color-mebl: #06C094;
 }
 
 /* Reset and base styles  */
@@ -54,7 +59,7 @@ html {
 }
 
 /* Common */
-body {
+#root, body {
   position: relative;
   overflow-x: hidden;
   padding: 0;
@@ -63,7 +68,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  background-color: var(--color-bg);
+  background-color: var(--color-white);
   color: var(--color-dark);
 
   font-family: var(--font-main);
