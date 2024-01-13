@@ -1,10 +1,10 @@
-import { Container } from "../Container/Container";
+import Catalog from "../../components/Catalog/Catalog";
+import Products from "../../components/Products/Products";
 import "./Main.scss";
 
 export const Main = () => (
   <main>
-    <Container>
-      Main Section
-    </Container>
+    <Catalog />
+    <Products />
   </main>
 );
