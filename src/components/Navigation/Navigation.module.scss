@@ -36,10 +36,13 @@
 }
 
 .link-text {
-  display: none;
+  position: fixed;
+  transform: scale(0);
+  transition: transform 0.2s ease-in-out;
 
   @media (min-width: 580px) {
-      display: block;
+    position: unset;
+    transform: scale(1);
   }
 }
 
