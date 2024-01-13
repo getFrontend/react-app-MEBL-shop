@@ -1,0 +1,116 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 12px;
+
+  @media(min-width: 580px) {
+    gap: 19px;
+  }
+
+  // &__link {}
+
+  &__image {
+    $imageHeight: 120;
+    $imageWidth: 140;
+    
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    aspect-ratio: calc($imageWidth/20) / calc($imageHeight/20);
+
+    @media (min-width: 580px) {
+      $imageHeight: 200;
+      $imageWidth: 230;
+      aspect-ratio: calc($imageWidth/20) / calc($imageHeight/20);
+    }
+
+    @media (min-width: 820px) {
+      $imageHeight: 250;
+      $imageWidth: 302;
+      aspect-ratio: calc($imageWidth/20) / calc($imageHeight/20);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 4px;
+
+    @media(min-width: 580px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__item-title {
+    font-size: 12px;
+    font-weight: 400;
+
+    @media(min-width: 580px) {
+      font-size: 16px;
+    }
+  }
+
+  // &__item-link {}
+
+  &__item-price {
+    font-size: 16px;
+
+    @media(min-width: 580px) {
+      margin-top: -4px;
+      font-size: 20px;
+    }
+  }
+
+  &__button-cart {
+    padding: 12px 24px;
+    background-color: transparent;
+    color: var(--color-mebl-dark);
+    border-radius: 32px;
+    border: 1px solid var(--color-mebl-dark);
+
+    @media(min-width: 580px) {
+      margin-top: -1px;
+    }
+
+    &:hover {
+      background-color: var(--color-mebl);
+      border-color: var(--color-mebl);
+      color: var(--color-white);
+    }
+
+    &:active {
+      color: #c0f;
+      background-color: transparent;
+      border-color: #c0f;
+    }
+  }
+
+  &__button-favourite {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    svg {
+      fill: var(--color-white);
+    }
+
+    &:hover,
+    &_active {
+      svg {
+        fill: var(--color-mebl);
+      }
+      color: var(--color-dark);
+    }
+
+    &:active {
+      svg {
+        fill: #c0f;
+      }
+      color: #c0f;
+    }
+  }
+} 
