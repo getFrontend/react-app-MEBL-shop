@@ -2,7 +2,6 @@ import styles from "./SearchForm.module.scss";
 
 function SearchForm(props) {
   return (
-    // <p className={props.className}>SearchForm</p>
     <form className={props.className} method="get">
       <input className={styles["input"]}
         type="search"
