@@ -13,6 +13,10 @@
       'logo navigation'
       'search search';
 
+    & a:focus-visible {
+      outline-color: var(--color-mebl);
+    }
+    
     @media (min-width: 820px) {
       grid-template-areas: 'logo search navigation';
       grid-template-columns: 94px 1fr auto;
