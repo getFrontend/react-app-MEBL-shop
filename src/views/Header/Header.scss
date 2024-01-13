@@ -27,8 +27,6 @@
 
   &__search {
     grid-area: search;
-    position: relative;
-    width: 100%;
 
     @media (min-width: 820px) {
       max-width: 408px;
