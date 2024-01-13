@@ -23,9 +23,22 @@
     @media (min-width: 580px) {
       padding: 0;
     }
+
+    @media (min-width: 1120px) {
+      overflow-x: visible;
+    }
   }
 
-  // &__item {}
+  &__item {
+
+    @media (min-width: 1120px) {
+      transition: transform .3s ease-in-out;
+  
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+  }
 
   &__link {
     display: block;
@@ -46,7 +59,9 @@
       color: var(--color-mebl-dark);
     }
 
-    &:active,
+    &:active {
+      transform: scale(0.985);
+    }
     &_active {
       background-color: var(--color-mebl-dark);
       color: var(--color-white);
