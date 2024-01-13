@@ -3,7 +3,7 @@
   height: 38px;
   padding: 0 44px 0 24px;
   background-color: var(--color-gray);
-  border: none;
+  border: 1px solid trasparent;
   border-radius: 32px;
 
   &::placeholder {
@@ -27,6 +27,7 @@
   border-radius: 4px;
   outline-offset: 4px;
   outline: 1px solid transparent;
+  transition: color 0.2s ease-in;
 
   &:hover,
   &:active {
