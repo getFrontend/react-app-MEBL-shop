@@ -36,7 +36,9 @@
     outline: none;
     border: 1px solid transparent;
     white-space: nowrap;
-    transition: border-color;
+    transition: 
+      border-color .3s ease-in-out,
+      color .3s ease-in-out;
 
     &:hover,
     &:focus-visible {
