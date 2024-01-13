@@ -5,20 +5,36 @@
   height: 100%;
   gap: 12px;
 
+  &:hover &__link {
+    filter: drop-shadow(0 .4em .8em var(--color-gray-dark));
+  }
+
+  &:hover &__image {
+    transform: scale(1.05);
+  }
+
   @media(min-width: 580px) {
     gap: 19px;
   }
 
-  // &__link {}
+  &__link {
+    overflow: hidden;
+    border-radius: 16px;
+    transition: filter .3s ease-in-out;
+
+    &:focus-visible {
+      outline-color: var(--color-mebl);
+    }
+  }
 
   &__image {
     $imageHeight: 120;
     $imageWidth: 140;
     
     width: 100%;
-    border-radius: 16px;
     object-fit: cover;
     aspect-ratio: calc($imageWidth/20) / calc($imageHeight/20);
+    transition: transform .3s ease-in-out;
 
     @media (min-width: 580px) {
       $imageHeight: 200;
@@ -54,7 +70,12 @@
     }
   }
 
-  // &__item-link {}
+  &__item-link {
+
+    &:focus-visible {
+      outline-color: var(--color-mebl);
+    }
+  }
 
   &__item-price {
     font-size: 16px;
@@ -71,21 +92,31 @@
     color: var(--color-mebl-dark);
     border-radius: 32px;
     border: 1px solid var(--color-mebl-dark);
+    transition: 
+      background-color .3s ease-in-out,
+			color .3s ease-in-out,
+			border-color .3s ease-in-out;
 
     @media(min-width: 580px) {
       margin-top: -1px;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       background-color: var(--color-mebl);
       border-color: var(--color-mebl);
       color: var(--color-white);
     }
 
+    // &:hover {
+    //   filter: drop-shadow(0 0 2em var(--color-mebl));
+    // }
+
     &:active {
-      color: #c0f;
-      background-color: transparent;
-      border-color: #c0f;
+      transform: scale(0.99);
+      // background-color: transparent;
+      // border-color: var(--color-dark);
+      // color: var(--color-dark);
     }
   }
 
@@ -93,24 +124,45 @@
     position: absolute;
     top: 12px;
     right: 12px;
+    color: var(--color-dark);
+    transition: color .3s ease-in-out;
 
     svg {
+      width: 16px;
+      height: 16px;
       fill: var(--color-white);
+      transition: fill .3s ease-in-out, transform .3s ease-in-out;
+
+      @media (min-width: 820px) {
+        width: 20px;
+        height: 20px;
+      }
+
+      @media (min-width: 1120px) {
+        width: 24px;
+        height: 24px;
+      }
     }
 
     &:hover,
+    &:focus-visible,
     &_active {
       svg {
         fill: var(--color-mebl);
       }
-      color: var(--color-dark);
+      color: var(--color-mebl-dark);
+    }
+
+    &:hover {
+      svg {
+        transform: translateY(-2px);
+      }
     }
 
     &:active {
       svg {
-        fill: #c0f;
+        transform: scale(0.9);
       }
-      color: #c0f;
     }
   }
 } 
