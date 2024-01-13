@@ -48,7 +48,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    color: #F1E9E4;
+    color: var(--color-light);
 
     @media (min-width: 580px) {
       grid-area: developers;
@@ -60,12 +60,12 @@
 
   &__developer-link {
     &:hover {
-      color: #fff;
+      color: var(--color-white);
     }
   }
 
   &__copyright {
-    color: #F1E9E4;
+    color: var(--color-light);
 
     @media (min-width: 580px) {
       grid-area: copyright;
