@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
-const API_URL_PRODUCTS = "https://koff-api.vercel.app/api/products";
+import { API_URL_PRODUCTS } from "../api";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
