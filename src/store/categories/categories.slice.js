@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const API_URL_CAREGORIES = "https://koff-api.vercel.app/api/productCategories";
 
-const fetchCategories = createAsyncThunk(
+export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
