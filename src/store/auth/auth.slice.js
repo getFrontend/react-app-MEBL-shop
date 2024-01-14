@@ -12,7 +12,7 @@ export const fetchAccessToken = createAsyncThunk(
     }
 
     const data = await response.json();
-    return data.accessToken;
+    return data.accessKey;
   }
 );
 
