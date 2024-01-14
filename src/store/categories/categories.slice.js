@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const API_URL_CAREGORIES = "https://koff-api.vercel.app/api/productCategories";
+const API_URL_CATEGORIES = "https://koff-api.vercel.app/api/productCategories";
 
 export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
@@ -8,7 +8,7 @@ export const fetchCategories = createAsyncThunk(
     const state = thunkAPI.getState();
     const token = state.auth.accessToken;
 
-    const response = await fetch(API_URL_CAREGORIES, {
+    const response = await fetch(API_URL_CATEGORIES, {
       headers: {
         "Authorization": `Bearer ${token}`
       }
