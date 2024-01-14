@@ -12,6 +12,14 @@
 
   &__container {
     padding: 0;
+
+    @media (min-width: 860px) {
+      padding-inline: 43px;
+    }
+
+    @media (min-width: 1120px) {
+      padding-inline: 92px;
+    }
   }
 
   &__list {
@@ -33,7 +41,7 @@
 
     @media (min-width: 1120px) {
       transition: transform .3s ease-in-out;
-  
+
       &:hover {
         transform: translateY(-2px);
       }
@@ -49,7 +57,7 @@
     outline: none;
     border: 1px solid transparent;
     white-space: nowrap;
-    transition: 
+    transition:
       border-color .3s ease-in-out,
       color .3s ease-in-out;
 
@@ -62,6 +70,7 @@
     &:active {
       transform: scale(0.985);
     }
+
     &_active {
       background-color: var(--color-mebl-dark);
       color: var(--color-white);
