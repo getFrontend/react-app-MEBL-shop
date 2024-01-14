@@ -1,3 +1,10 @@
+.loading {
+  flex-grow: 1;
+  margin: 0 auto;
+  font-size: 5vw;
+  opacity: .3;
+}
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
