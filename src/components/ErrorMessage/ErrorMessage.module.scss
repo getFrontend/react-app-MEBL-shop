@@ -1,0 +1,19 @@
+.error {
+  display: grid;
+  place-content: center;
+  margin: 0 auto;
+  padding-inline: 16px;
+  text-align: center;
+  color: orangered;
+}
+
+.title {
+  margin-bottom: 2rem;
+  font-size: clamp(1rem, 0.3253rem + 3.3735vw, 4.5rem);
+  opacity: .7;
+}
+
+.text {
+  font-size: clamp(0.75rem, 0.509rem + 1.2048vw, 2rem);
+  opacity: .4;
+}
