@@ -5,6 +5,8 @@ import "./Main.scss";
 import { useEffect } from "react";
 import { fetchCategories } from "../../store/categories/categories.slice";
 import { fetchProducts } from "../../store/products/products.slice";
+import Loader from "../../components/Loader/Loader";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 export const Main = () => {
   const dispatch = useDispatch();
@@ -25,8 +27,21 @@ export const Main = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (loadingCategories || loadingProducts) return <div className="loading">Загрузка...</div>;
-  if (errorCategories || errorProducts) return <div>Ошибка: {errorCategories}</div>;
+  if (loadingCategories || loadingProducts) {
+    return (
+      <main>
+        <Loader />
+      </main>
+    );
+  }
+
+  if (errorCategories || errorProducts) {
+    return (
+      <main>
+        <ErrorMessage message={errorProducts || errorProducts} />
+      </main>
+    );
+  }
 
   return (
     <main>

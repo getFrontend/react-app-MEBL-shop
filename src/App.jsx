@@ -5,6 +5,7 @@ import { Header } from "./views/Header/Header";
 import { Main } from "./views/Main/Main";
 import { useEffect } from "react";
 import { fetchAccessToken } from "./store/auth/auth.slice";
+import Loader from "./components/Loader/Loader";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,7 +20,13 @@ function App() {
   return (
     <>
       <Header />
-      {!loading && accessToken ? <Main /> : <div className="loading">Загрузка...</div>}
+      {
+        !loading && accessToken ?
+          <Main /> :
+          <Main>
+            <Loader />
+          </Main>
+      }
       <Footer />
     </>
   );
