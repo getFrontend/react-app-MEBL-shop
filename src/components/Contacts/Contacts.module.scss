@@ -13,6 +13,7 @@
   &__list {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     
     @media (min-width: 820px) {
@@ -20,8 +21,7 @@
     }
   }
 
-  // &__item {
-  // }
+  // &__item {}
 
   &__link {
 
