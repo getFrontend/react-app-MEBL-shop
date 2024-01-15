@@ -14,7 +14,7 @@ export const fetchCategories = createAsyncThunk(
     });
 
     if (!response.ok) {
-      throw new Error("Ошибка получения данных! Не удалось получить данные для каталога!");
+      throw new Error("Ошибка получения данных! Не удалось получить категории товаров!");
     }
 
     return response.json();

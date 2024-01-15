@@ -7,7 +7,7 @@ export const fetchAccessToken = createAsyncThunk(
     const response = await fetch(URL_API_ACCESSKEY);
 
     if (!response.ok) {
-      throw new Error("Ошибка получения данных! Токен доступа не получен!");
+      throw new Error("Токен доступа не получен: не удалось авторизоваться на сервере!");
     }
 
     const data = await response.json();
