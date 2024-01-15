@@ -1,5 +1,4 @@
 .catalog {
-  overflow-x: hidden;
   padding-top: 24px;
 
   @media (min-width: 820px) {
@@ -38,51 +37,47 @@
   }
 
   &__item {
+    flex-shrink: 0;
 
-    @media (min-width: 1120px) {
+    @media (min-width: 1160px) {
       transition: transform .3s ease-in-out;
 
       &:hover {
-        transform: translateY(-2px);
+        transform: translateY(-3px);
       }
     }
   }
 
   &__link {
-    display: block;
-    padding: 8px 14px 10px 14px;
-    background-color: var(--color-gray);
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px;
     color: var(--color-gray-dark);
     border-radius: 32px;
     outline: none;
-    border: 1px solid transparent;
+    border: 1px solid var(--color-mebl);
     white-space: nowrap;
     transition:
-      border-color .3s ease-in-out,
-      color .3s ease-in-out;
+      background-color .3s ease-in-out,
+      color .2s ease-in-out;
 
     &:hover,
-    &:focus-visible {
-      border-color: var(--color-mebl);
-      color: var(--color-mebl-dark);
-    }
-
-    &:active {
-      transform: scale(0.985);
-    }
-
+    &:focus-visible,
     &_active {
-      background-color: var(--color-mebl-dark);
+      background-color: var(--color-mebl);
       color: var(--color-white);
-
-      &:hover,
-      &:focus-visible {
-        color: var(--color-white);
-      }
     }
 
     &_active {
       pointer-events: none;
     }
+
+    &:active {
+      transform: scale(0.985);
+    }
+  }
+
+  &__icon {
+    height: 16px;
   }
 }
