@@ -2,6 +2,8 @@
 
 Online furniture shop made on React framework as part of the training marathon taking place from 8 to 21 January.
 
+![](https://github.com/getFrontend/react-app-MEBL-shop/blob/main/mebl_preview.png?raw=true)
+
 ## Project development
 
 The project uses **React** and **React DOM** to create components and control the visual display:
