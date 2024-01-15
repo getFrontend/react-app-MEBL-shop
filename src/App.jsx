@@ -6,16 +6,29 @@ import { Main } from "./views/Main/Main";
 import { useEffect } from "react";
 import { fetchAccessToken } from "./store/auth/auth.slice";
 import Loader from "./components/Loader/Loader";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 
 function App() {
   const dispatch = useDispatch();
-  const { accessToken, loading } = useSelector(state => state.auth);
+  const {
+    accessToken,
+    loading,
+    error: errorAuth
+  } = useSelector(state => state.auth);
 
   useEffect(() => {
     if (!accessToken) {
       dispatch(fetchAccessToken());
     }
   }, [dispatch, accessToken]);
+
+  if (errorAuth) {
+    return (<>
+      <Header />
+      <main><ErrorMessage message={errorAuth} /></main>
+      <Footer />
+    </>);
+  }
 
   return (
     <>
