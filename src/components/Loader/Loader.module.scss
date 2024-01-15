@@ -1,0 +1,28 @@
+// .loading {
+//   width: 100%;
+//   margin: 0 auto;
+//   font-size: 5vw;
+//   opacity: .3;
+// }
+
+.loader-container {
+  inset: 0;
+  display: grid;
+  place-content: center;
+}
+
+.loader {
+  width: 5rem;
+  height: 5rem;
+  border: .4rem solid var(--color-mebl);
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: .6s ease infinite alternate spinner;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(1turn) scale(1.2);
+  }
+}
