@@ -10,6 +10,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 export const Main = () => {
   const dispatch = useDispatch();
+
   const {
     data: dataCategories,
     loading: loadingCategories,
@@ -35,12 +36,12 @@ export const Main = () => {
     );
   }
 
-  if (errorCategories || errorProducts) {
-    return (
-      <main>
-        <ErrorMessage message={errorProducts || errorProducts} />
-      </main>
-    );
+  if (errorCategories) {
+    return (<main><ErrorMessage message={errorCategories} /></main>);
+  }
+
+  if (errorProducts) {
+    return (<main><ErrorMessage message={errorProducts} /></main>);
   }
 
   return (
