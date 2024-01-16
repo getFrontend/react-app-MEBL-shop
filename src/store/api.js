@@ -1,3 +1,4 @@
-export const URL_API_ACCESSKEY = "https://koff-api.vercel.app/api/users/accessKey";
-export const API_URL_CATEGORIES = "https://koff-api.vercel.app/api/productCategories";
-export const API_URL_PRODUCTS = "https://koff-api.vercel.app/api/products";
+export const API_URL = "https://koff-api.vercel.app/";
+export const API_URL_ACCESSKEY = `${API_URL}api/users/accessKey`;
+export const API_URL_CATEGORIES = `${API_URL}api/productCategories`;
+export const API_URL_PRODUCTS = `${API_URL}api/products`;
