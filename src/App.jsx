@@ -33,13 +33,7 @@ function App() {
   return (
     <>
       <Header />
-      {
-        !loading && accessToken ?
-          <Main /> :
-          <Main>
-            <Loader />
-          </Main>
-      }
+      {!loading && accessToken ? <Main /> : <main><Loader /></main>}
       <Footer />
     </>
   );
