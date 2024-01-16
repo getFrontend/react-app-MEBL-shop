@@ -22,17 +22,13 @@ function Products(props) {
 
   if (loading) {
     return (
-      <main>
-        <Loader />
-      </main>
+      <Loader />
     );
   }
 
   if (error) {
     return (
-      <main>
-        <ErrorMessage message={error} />
-      </main>
+      <ErrorMessage message={error} />
     );
   }
 
