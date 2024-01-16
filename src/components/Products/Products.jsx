@@ -20,7 +20,7 @@ function Products({ data }, ...props) {
         <ul className={styles["products__list"]}>
           {data.map(item => (
             <li className={styles["products__item"]} key={item.id}>
-              <ProductCard data={item}/>
+              <ProductCard {...item} />
             </li>
           ))}
         </ul>

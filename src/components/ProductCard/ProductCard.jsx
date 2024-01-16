@@ -1,20 +1,20 @@
 import styles from "./ProductCard.module.scss";
 
-function ProductCard({ data }, ...props) {
+function ProductCard({ id, images: [image], name: title, price }, ...props) {
   // const defaultData = {
   //   id: 51,
-  //   img: "https://koff-api.vercel.app//img/1hcgrit0rhd5gr2t.jpg",
+  //   image: "https://koff-api.vercel.app//img/1hcgrit0rhd5gr2t.jpg",
   //   title: "Полутораспальная кровать Фади",
   //   price: "6725",
   // };
 
-  const { id, images: img, name: title, price } = data;
+  // const { id, image, title, price } = defaultData;
 
   return (
     <article className={styles["card"]}>
       <a className={styles["card__link"]} href={`/product/${id}`}>
         <img className={styles["card__image"]}
-          src={`https://koff-api.vercel.app//${img[0]}`} alt={title} />
+          src={`https://koff-api.vercel.app//${image}`} alt={title} />
       </a>
       <div className={styles["card__info"]}>
         <h3 className={styles["card__item-title"]}>
