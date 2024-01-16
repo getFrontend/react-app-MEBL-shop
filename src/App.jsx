@@ -11,6 +11,7 @@ import Catalog from "./components/Catalog/Catalog";
 import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
 import Card from "./components/Card/Card";
+import Page404 from "./components/Page404/Page404";
 
 const router = createBrowserRouter([
   {
@@ -96,7 +97,7 @@ const router = createBrowserRouter([
       <>
         <Header />
         <main>
-          <div>Ошибка 404</div>
+          <Page404 />
         </main>
         <Footer />
       </>
