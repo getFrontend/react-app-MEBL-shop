@@ -3,21 +3,52 @@ import styles from "./Card.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs } from "swiper/modules";
 import "swiper/css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProduct } from "../../store/product/product.slice";
+// import Loader from "../Loader/Loader";
+// import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
-function Card({ productId }) {
+function Card() {
   const defaultData = {
     id: 51,
     title: "Полутораспальная кровать Фади",
     image: "https://koff-api.vercel.app//img/1hcgrit0rhd5gr2t.jpg",
     price: "6725"
   };
-  const { id, title, image, price } = defaultData;
-
-  console.log(productId);
+  const { title, image, price } = defaultData;
 
   const [mainSwiper, setMainSwiper] = useState(null);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  const { productId } = useParams();
+  const dispatch = useDispatch();
+
+  const {
+    data,
+    // loading,
+    // error,
+  } = useSelector(state => state.product);
+
+  console.log("data: ", data || "no");
+
+  useEffect(() => {
+    dispatch(fetchProduct(productId));
+  }, [dispatch, productId]);
+
+
+  // if (loading) {
+  //   return (
+  //     <Loader />
+  //   );
+  // }
+
+  // if (error) {
+  //   return (
+  //     <ErrorMessage message={error} />
+  //   );
+  // }
 
   return (
     <section className={styles["card"]}>
@@ -94,7 +125,7 @@ function Card({ productId }) {
           <p className="product__article">арт. 16954355927</p>
           <div className="product__specs">
             <h3 className="product__specs-title">Общие характеристики</h3>
-            <table className="product__specs-table table">
+            {/* <table className="product__specs-table table">
               <tr className="table__row">
                 <td className="table__field">Тип</td>
                 <td className="table__value">Компьютерный стол</td>
@@ -115,11 +146,11 @@ function Card({ productId }) {
                 <td className="table__field">Бренд</td>
                 <td className="table__value">GARUN</td>
               </tr>
-            </table>
+            </table> */}
           </div>
           <div className="product__buttons">
-            <button className="product__buttons-cart" data-id={id}>В корзину</button>
-            <button className="product__buttons-favourite" data-id={id}>
+            <button className="product__buttons-cart" data-id={productId}>В корзину</button>
+            <button className="product__buttons-favourite" data-id={productId}>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                 viewBox="0 0 16 16">
                 {/* eslint-disable-next-line max-len */}
