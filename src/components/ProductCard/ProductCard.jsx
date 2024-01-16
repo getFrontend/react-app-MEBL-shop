@@ -1,3 +1,4 @@
+import { API_URL } from "../../store/api";
 import styles from "./ProductCard.module.scss";
 
 function ProductCard({ id, images: [image], name: title, price }, ...props) {
@@ -14,7 +15,7 @@ function ProductCard({ id, images: [image], name: title, price }, ...props) {
     <article className={styles["card"]}>
       <a className={styles["card__link"]} href={`/product/${id}`}>
         <img className={styles["card__image"]}
-          src={`https://koff-api.vercel.app//${image}`} alt={title} />
+          src={`${API_URL}/${image}`} alt={title} />
       </a>
       <div className={styles["card__info"]}>
         <h3 className={styles["card__item-title"]}>
