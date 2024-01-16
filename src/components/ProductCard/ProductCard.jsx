@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { API_URL } from "../../store/api";
 import styles from "./ProductCard.module.scss";
 
@@ -13,15 +14,15 @@ function ProductCard({ id, images: [image], name: title, price }, ...props) {
 
   return (
     <article className={styles["card"]}>
-      <a className={styles["card__link"]} href={`/product/${id}`}>
+      <Link className={styles["card__link"]} to={`/product/${id}`}>
         <img className={styles["card__image"]}
           src={`${API_URL}/${image}`} alt={title} />
-      </a>
+      </Link>
       <div className={styles["card__info"]}>
         <h3 className={styles["card__item-title"]}>
-          <a className={styles["card__item-link"]} href={`/product/${id}`}>
+          <Link className={styles["card__item-link"]} to={`/product/${id}`}>
             {title}
-          </a>
+          </Link>
         </h3>
         <span className={styles["card__item-price"]}>
           {parseInt(price).toLocaleString()}&nbsp;₴

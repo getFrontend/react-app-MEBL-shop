@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { fetchCategories } from "../../store/categories/categories.slice";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { Link } from "react-router-dom";
 
 function Catalog(props) {
   // const defaultData = [
@@ -46,14 +47,14 @@ function Catalog(props) {
         <ul className={styles["catalog__list"]}>
           {data.map((item, index) => (
             <li className={styles["catalog__item"]} key={index}>
-              <a className={styles["catalog__link"]} href={`/category?slug=${item}`}>
+              <Link className={styles["catalog__link"]} to={`/category?slug=${item}`}>
                 <img
                   className={styles["catalog__icon"]}
                   src={getCatalogIcon(index)}
                   alt={`Иконка: ${item}`}
                 />
                 <span className={styles["catalog__text"]}>{item}</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
