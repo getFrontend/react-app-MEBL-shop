@@ -1,12 +1,96 @@
-import "./App.css";
+import "./App.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Footer } from "./views/Footer/Footer";
 import { Header } from "./views/Header/Header";
-import { Main } from "./views/Main/Main";
 import { useEffect } from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { fetchAccessToken } from "./store/auth/auth.slice";
 import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
+import Catalog from "./components/Catalog/Catalog";
+import Products from "./components/Products/Products";
+import Cart from "./components/Cart/Cart";
+import Card from "./components/Card/Card";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <>
+        <Header />
+        <main>
+          <Catalog />
+          <Products />
+        </main>
+        <Footer />
+      </>
+    )
+  },
+  {
+    path: "/category",
+    element: (
+      <>
+        <Header />
+        <main>
+          <Catalog />
+          <Products />
+        </main>
+        <Footer />
+      </>
+    )
+  },
+  {
+    path: "/favourite",
+    element: (
+      <>
+        <Header />
+        <main>
+          <Catalog />
+          <Products />
+        </main>
+        <Footer />
+      </>
+    )
+  },
+  {
+    path: "/search",
+    element: (
+      <>
+        <Header />
+        <main>
+          <Catalog />
+          <Products />
+        </main>
+        <Footer />
+      </>
+    )
+  },
+  {
+    path: "/cart",
+    element: (
+      <>
+        <Header />
+        <main>
+          <Cart />
+        </main>
+        <Footer />
+      </>
+    )
+  },
+  {
+    path: "/product/:productId",
+    element: (
+      <>
+        <Header />
+        <main>
+          <Catalog />
+          <Card />
+        </main>
+        <Footer />
+      </>
+    )
+  }
+]);
 
 function App() {
   const dispatch = useDispatch();
@@ -23,19 +107,21 @@ function App() {
   }, [dispatch, accessToken]);
 
   if (errorAuth) {
-    return (<>
-      <Header />
-      <main><ErrorMessage message={errorAuth} /></main>
-      <Footer />
-    </>);
+    return (
+      <>
+        <Header />
+        <main><ErrorMessage message={errorAuth} /></main>
+        <Footer />
+      </>
+    );
+  }
+
+  if (loading) {
+    return <main><Loader /></main>;
   }
 
   return (
-    <>
-      <Header />
-      {!loading && accessToken ? <Main /> : <main><Loader /></main>}
-      <Footer />
-    </>
+    <RouterProvider router={router} />
   );
 }
 
