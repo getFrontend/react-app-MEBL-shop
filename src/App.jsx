@@ -89,6 +89,18 @@ const router = createBrowserRouter([
         <Footer />
       </>
     )
+  },
+  {
+    path: "*",
+    element: (
+      <>
+        <Header />
+        <main>
+          <div>Ошибка 404</div>
+        </main>
+        <Footer />
+      </>
+    )
   }
 ]);
 
