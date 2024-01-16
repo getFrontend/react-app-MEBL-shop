@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { URL_API_ACCESSKEY } from "../api";
+import { API_URL_ACCESSKEY } from "../api";
 
 export const fetchAccessToken = createAsyncThunk(
   "auth/fetchAccessToken",
   async () => {
-    const response = await fetch(URL_API_ACCESSKEY);
+    const response = await fetch(API_URL_ACCESSKEY);
 
     if (!response.ok) {
       throw new Error("Токен доступа не получен: не удалось авторизоваться на сервере!");
