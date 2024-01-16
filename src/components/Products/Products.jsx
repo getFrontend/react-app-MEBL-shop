@@ -1,17 +1,40 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Container } from "../../views/Container/Container";
 import ProductCard from "../ProductCard/ProductCard";
 import styles from "./Products.module.scss";
+import { useEffect } from "react";
+import { fetchProducts } from "../../store/products/products.slice";
+import Loader from "../Loader/Loader";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
-function Products({ data }, ...props) {
-  // const MAX_PRODUCTS = 12;
-  // const dataDefault = [];
-  // let i = 0;
+function Products(props) {
+  const dispatch = useDispatch();
 
-  // console.log(data);
+  const {
+    data,
+    loading,
+    error
+  } = useSelector(state => state.products);
 
-  // for (let i = 0; i < MAX_PRODUCTS; i++) {
-  //   dataDefault.push(i);
-  // }
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  if (loading) {
+    return (
+      <main>
+        <Loader />
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main>
+        <ErrorMessage message={error} />
+      </main>
+    );
+  }
 
   return (
     <section className={styles["products"]}>

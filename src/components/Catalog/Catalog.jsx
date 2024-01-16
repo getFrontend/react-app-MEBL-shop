@@ -1,19 +1,50 @@
+import { useDispatch, useSelector } from "react-redux";
 import { getCatalogIcon } from "../../helpers/getCatalogIcon";
 import { Container } from "../../views/Container/Container";
 import styles from "./Catalog.module.scss";
+import { useEffect } from "react";
+import { fetchCategories } from "../../store/categories/categories.slice";
+import Loader from "../Loader/Loader";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
-function Catalog({ data }, ...props) {
-  const defaultData = [
-    "Тумбы", "Стулья", "Столы", "Пуфы и банкетки", "Кровати", "Диваны", "Полки", "Стеллажи"
-  ];
+function Catalog(props) {
+  // const defaultData = [
+  //   "Тумбы", "Стулья", "Столы", "Пуфы и банкетки", "Кровати", "Диваны", "Полки", "Стеллажи"
+  // ];
 
-  const catalog = data || defaultData;
+  const dispatch = useDispatch();
+
+  const {
+    data,
+    loading,
+    error,
+  } = useSelector(state => state.categories);
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
+  if (loading) {
+    return (
+      <main>
+        <Loader />
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main>
+        <ErrorMessage message={error} />
+      </main>
+    );
+  }
 
   return (
     <nav className={styles["catalog"]}>
       <Container className={styles["catalog__container"]}>
         <ul className={styles["catalog__list"]}>
-          {catalog.map((item, index) => (
+          {data.map((item, index) => (
             <li className={styles["catalog__item"]} key={index}>
               <a className={styles["catalog__link"]} href={`/category?slug=${item}`}>
                 <img
