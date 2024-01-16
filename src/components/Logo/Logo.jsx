@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import siteLogo from "/images/logo.png";
 
 function Logo(props) {
   return (
-    <a href="/">
+    <Link to="/">
       <img src={siteLogo} className={props.className} alt="MEBL logo image" />
-    </a>
+    </Link>
   );
 }
 
