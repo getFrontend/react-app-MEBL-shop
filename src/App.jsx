@@ -120,11 +120,13 @@ function App() {
   }, [dispatch, accessToken]);
 
   if (errorAuth) {
+    const errorData = {
+      path: "auth",
+      errorMsg: errorAuth
+    };
     return (
       <>
-        <Header />
-        <main><ErrorMessage message={errorAuth} /></main>
-        <Footer />
+        <ErrorMessage data={errorData} />
       </>
     );
   }
@@ -134,7 +136,7 @@ function App() {
   }
 
   return (
-    <RouterProvider router={router} />
+    (!loading && accessToken) ? <RouterProvider router={router} /> : <div>Fatal Error!!!</div>
   );
 }
 

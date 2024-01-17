@@ -18,7 +18,7 @@ function Catalog(props) {
   const {
     data,
     loading,
-    error,
+    error: errorCategories,
   } = useSelector(state => state.categories);
 
   useEffect(() => {
@@ -31,9 +31,13 @@ function Catalog(props) {
     );
   }
 
-  if (error) {
+  if (errorCategories) {
+    const errorData = {
+      path: "categories",
+      errorMsg: errorCategories
+    };
     return (
-      <ErrorMessage message={error} />
+      <ErrorMessage data={errorData}/>
     );
   }
 
