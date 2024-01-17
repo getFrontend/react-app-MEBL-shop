@@ -1,0 +1,139 @@
+.gallery {
+  // overflow: hidden;
+  margin-bottom: 32px;
+
+  @media (min-width: 580px) {
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 820px) {
+    grid-column: 1/2;
+    margin-bottom: 0;
+  }
+}
+
+.slider-main {
+  position: relative;
+  width: 100%;
+  height: 74vw;
+  max-height: 586px;
+  overflow: hidden;
+  border-radius: 16px;
+
+  @media (min-width: 580px) {
+    margin-bottom: 14px;
+    height: 92vw;
+  }
+
+  @media (min-width: 820px) {
+    height: 60vw;
+    max-height: 512px;
+  }
+
+  @media (min-width: 1120px) {
+    height: 48vw;
+    // max-height: 688px;
+    // min-width: 832px;
+  }
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.slide-thumbnail {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.product__image,
+.product__image-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-thumbnails {
+  display: none;
+  height: 22vw;
+  max-height: 138px;
+
+  & .slide {
+    cursor: zoom-in;
+  }
+
+  @media (min-width: 580px) {
+    display: block;
+    margin-top: 14px;
+  }
+
+  @media (min-width: 820px) {
+    height: 12vw;
+    max-height: 120px;
+  }
+
+  @media (min-width: 1120px) {
+    max-height: 162px;
+  }
+}
+
+.slider-controls {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+
+  &__prev,
+  &__next {
+    border: 1px solid transparent;
+    transition: border 0.2s ease-in-out, filter 0.2s ease-in-out;
+  }
+
+  &__prev:hover,
+  &__next:hover,
+  &__prev:focus-visible,
+  &__next:focus-visible {
+    border: 1px solid var(--color-mebl);
+    filter: drop-shadow(0 0 1em var(--color-mebl-dark));
+  }
+
+  &__prev:active {
+    margin-right: -2px;
+  }
+  &__next:active {
+    margin-left: -2px;
+  } 
+
+  &__prev{
+    right: 16px;
+
+    @media (min-width: 580px) {
+      right: 24px;
+      height: 52px;
+      width: 52px;
+      border-radius: 50%;
+    }
+  }
+
+  &__next {
+    left: 16px;
+
+    @media (min-width: 580px) {
+      left: 24px;
+      height: 52px;
+      width: 52px;
+      border-radius: 50%;
+    }
+  }
+}
