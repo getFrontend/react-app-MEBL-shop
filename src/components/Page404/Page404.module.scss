@@ -41,10 +41,10 @@
 .text {
   font-size: clamp(0.875rem, 0.6581rem + 1.0843vw, 2rem);
   opacity: .4;
-}
-
-p + p {
-  padding-top: 20px;
+  
+  & p + p {
+    padding-top: 20px;
+  }
 }
 
 .link {
