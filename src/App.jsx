@@ -12,6 +12,7 @@ import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
 import Card from "./components/Card/Card";
 import Page404 from "./components/Page404/Page404";
+import RemoveToken from "./components/RemoveToken/RemoveToken";
 
 const router = createBrowserRouter([
   {
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
         <Footer />
       </>
     )
+  },
+  {
+    path: "/token-reset",
+    element: <RemoveToken />
   },
   {
     path: "*",
