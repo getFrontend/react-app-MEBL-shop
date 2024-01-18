@@ -85,7 +85,7 @@ const router = createBrowserRouter([
       <>
         <Header />
         <main>
-          {/* <Catalog /> */}
+          <Catalog />
           <Card />
         </main>
         <Footer />
