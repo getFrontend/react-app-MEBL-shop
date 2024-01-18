@@ -1,8 +1,11 @@
 import styles from "./Gallery.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs } from "swiper/modules";
+import { Navigation, Thumbs, FreeMode } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
 import { useState } from "react";
 import { API_URL } from "../../store/api";
+
 // import { getDefaultData } from "../../helpers/getDefaultData";
 
 function Gallery({ data }) {
@@ -16,10 +19,11 @@ function Gallery({ data }) {
       <div className={styles["slider-main"]}>
         {data?.images.length ? (
           <Swiper
-            modules={[Navigation, Thumbs]}
+            modules={[Navigation, Thumbs, FreeMode]}
             thumbs={{ swiper: thumbsSwiper }}
             onSwiper={setMainSwiper}
             spaceBetween={10}
+            freeMode={true}
           >
             {data.images.map((img, index) => (
               <SwiperSlide className={styles["slide"]} key={index}>
