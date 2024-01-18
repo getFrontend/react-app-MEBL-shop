@@ -14,6 +14,12 @@ export const fetchProduct = createAsyncThunk(
     });
 
     if (!response.ok) {
+      if (response.status === 401) {
+        return thunkAPI.rejectWithValue({
+          status: response.status,
+          error: "Ошибка 401: Информация про товар не получена."
+        });
+      }
       throw new Error("Ошибка получения данных! Не удалось получить информацию про товар!");
     }
 
