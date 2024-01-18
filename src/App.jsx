@@ -5,7 +5,6 @@ import { Header } from "./views/Header/Header";
 import { useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { fetchAccessToken } from "./store/auth/auth.slice";
-import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import Catalog from "./components/Catalog/Catalog";
 import Products from "./components/Products/Products";
@@ -13,6 +12,7 @@ import Cart from "./components/Cart/Cart";
 import Card from "./components/Card/Card";
 import Page404 from "./components/Page404/Page404";
 import RemoveToken from "./components/RemoveToken/RemoveToken";
+import Preloader from "./components/Preloader/Preloader";
 
 const router = createBrowserRouter([
   {
@@ -137,7 +137,7 @@ function App() {
   }
 
   if (loading) {
-    return <main><Loader /></main>;
+    return <Preloader />;
   }
 
   return (
