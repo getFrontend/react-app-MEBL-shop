@@ -7,7 +7,7 @@
 }
 
 .preloader {
-  font-size: 6em;
+  font-size: clamp(1.25rem, 0.6235rem + 3.1325vw, 4.5rem);
   font-weight: 700;
   letter-spacing: .3em;
   color: var(--color-mebl);
