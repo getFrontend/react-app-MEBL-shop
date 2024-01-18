@@ -5,6 +5,7 @@ export const apiTokenErrorMiddleware = (store) => (next) => async (action) => {
   if (action.type.endsWith("rejected") && action.payload?.status === 401) {
     if (!state.auth.loading) {
       await store.dispatch(fetchAccessToken());
+      console.log("✅Токен был успешно обновлён!");
     }
   }
   next(action);
