@@ -3,11 +3,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs } from "swiper/modules";
 import { useState } from "react";
 import { API_URL } from "../../store/api";
-import { getDefaultData } from "../../helpers/getDefaultData";
+// import { getDefaultData } from "../../helpers/getDefaultData";
 
-function Gallery({ name, images }) {
-  const { images: defaultImages } = getDefaultData("product");
-  console.log("getDefaultData: ", defaultImages);
+function Gallery({ data }) {
+  // const { images: defaultImages } = getDefaultData("product");
 
   const [mainSwiper, setMainSwiper] = useState(null);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -15,19 +14,24 @@ function Gallery({ name, images }) {
   return (
     <div className={styles["gallery"]}>
       <div className={styles["slider-main"]}>
-        <Swiper
-          modules={[Navigation, Thumbs]}
-          thumbs={{ swiper: thumbsSwiper }}
-          onSwiper={setMainSwiper}
-          spaceBetween={10}
-        >
-          {defaultImages.map((img, index) => (
-            <SwiperSlide className={styles["slide"]} key={index}>
-              <img className={styles["product__image"]}
-                src={`${API_URL}${img}`} alt={name} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {data?.images.length ? (
+          <Swiper
+            modules={[Navigation, Thumbs]}
+            thumbs={{ swiper: thumbsSwiper }}
+            onSwiper={setMainSwiper}
+            spaceBetween={10}
+          >
+            {data.images.map((img, index) => (
+              <SwiperSlide className={styles["slide"]} key={index}>
+                <img className={styles["product__image"]}
+                  src={`${API_URL}${img}`} alt={data.name} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <>Данные не пришли</>
+        )
+        }
         <button className={`${styles["slider-controls"]} ${styles["slider-controls__prev"]}`}
           onClick={() => mainSwiper.slideNext()}>
           <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,24 +52,26 @@ function Gallery({ name, images }) {
               fill="#1C1C1C"></path>
           </svg>
         </button>
-
       </div>
-
       <div className={styles["slider-thumbnails"]}>
-        <Swiper
-          onSwiper={setThumbsSwiper}
-          modules={[Thumbs]}
-          watchSlidesProgress
-          spaceBetween={14}
-          slidesPerView={4}
-        >
-          {defaultImages.map((img, index) => (
-            <SwiperSlide className={styles["slide"]} key={index}>
-              <img className={styles["product__image-thumbnail"]}
-                src={`${API_URL}${img}`} alt={name} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {data?.images.length ? (
+          <Swiper
+            onSwiper={setThumbsSwiper}
+            modules={[Thumbs]}
+            watchSlidesProgress
+            spaceBetween={14}
+            slidesPerView={4}
+          >
+            {data.images.map((img, index) => (
+              <SwiperSlide className={styles["slide"]} key={index}>
+                <img className={styles["product__image-thumbnail"]}
+                  src={`${API_URL}${img}`} alt={data.name} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <>Данные не пришли</>
+        )}
       </div>
     </div>
   );
