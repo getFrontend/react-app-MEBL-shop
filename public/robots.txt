@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /*.js*
+Allow: /*.css*
+Allow: /*.png*
+Allow: /*.svg*
+Allow: /index.html
