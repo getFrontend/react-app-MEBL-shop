@@ -6,8 +6,9 @@ export const fetchProducts = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const token = state.auth.accessToken;
+    const LIMIT_DEFAULT = 12;
 
-    const response = await fetch(API_URL_PRODUCTS, {
+    const response = await fetch(`${API_URL_PRODUCTS}/?limit=${LIMIT_DEFAULT}`, {
       headers: {
         "Authorization": `Bearer ${token}`
       }
