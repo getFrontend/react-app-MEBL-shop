@@ -1,7 +1,8 @@
 import "./App.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Footer } from "./views/Footer/Footer";
 import { Header } from "./views/Header/Header";
+import { Main } from "./views/Main/Main";
+import { Footer } from "./views/Footer/Footer";
 import { useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { fetchAccessToken } from "./store/auth/auth.slice";
@@ -20,10 +21,10 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
-        <main>
+        <Main>
           <Catalog />
           <Products />
-        </main>
+        </Main>
         <Footer />
       </>
     )
@@ -33,10 +34,10 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
-        <main>
+        <Main>
           <Catalog />
           <Products />
-        </main>
+        </Main>
         <Footer />
       </>
     )
@@ -46,10 +47,10 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
-        <main>
+        <Main>
           <Catalog />
           <Products />
-        </main>
+        </Main>
         <Footer />
       </>
     )
@@ -59,10 +60,10 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
-        <main>
+        <Main>
           <Catalog />
           <Products />
-        </main>
+        </Main>
         <Footer />
       </>
     )
@@ -72,9 +73,9 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
-        <main>
+        <Main>
           <Cart />
-        </main>
+        </Main>
         <Footer />
       </>
     )
@@ -84,10 +85,10 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
-        <main>
+        <Main>
           <Catalog />
           <Card />
-        </main>
+        </Main>
         <Footer />
       </>
     )
@@ -101,9 +102,9 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
-        <main>
+        <Main>
           <Page404 />
-        </main>
+        </Main>
         <Footer />
       </>
     )
