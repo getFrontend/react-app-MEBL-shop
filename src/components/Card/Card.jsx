@@ -4,11 +4,12 @@ import "swiper/css";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProduct } from "../../store/product/product.slice";
+import { fetchProduct, is404ErrorProduct } from "../../store/product/product.slice";
 import Gallery from "../Gallery/Gallery";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Specifications from "../Specifications/Specifications";
+import Page404 from "../Page404/Page404";
 
 function Card() {
   const { productId } = useParams();
@@ -24,11 +25,18 @@ function Card() {
     dispatch(fetchProduct(productId));
   }, [dispatch, productId]);
 
+  if (is404ErrorProduct) {
+    return (
+      <Page404 />
+    );
+  }
+
   if (loading || Object.keys(data).length === 0) {
     return (
       <Loader />
     );
   }
+
 
   if (errorProduct) {
     const errorData = {

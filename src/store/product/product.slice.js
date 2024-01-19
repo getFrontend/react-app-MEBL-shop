@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API_URL_PRODUCTS } from "../api";
 
+export let is404ErrorProduct = false;
+
 export const fetchProduct = createAsyncThunk(
   "product/fetchProduct",
   async (id, thunkAPI) => {
@@ -15,9 +17,18 @@ export const fetchProduct = createAsyncThunk(
 
     if (!response.ok) {
       if (response.status === 401) {
+        console.log("❌ Ошибка 401");
         return thunkAPI.rejectWithValue({
           status: response.status,
           error: "Ошибка 401: Информация про товар не получена."
+        });
+      }
+      if (response.status === 404) {
+        is404ErrorProduct = true;
+        console.error("❌ Ошибка 404: Такого товара на сервере нет!");
+        return thunkAPI.rejectWithValue({
+          status: response.status,
+          error: "Ошибка 404: товар не найдён"
         });
       }
       throw new Error("Ошибка получения данных! Не удалось получить информацию про товар!");
