@@ -37,7 +37,7 @@ function Gallery({ data }) {
         )
         }
         <button className={`${styles["slider-controls"]} ${styles["slider-controls__prev"]}`}
-          onClick={() => mainSwiper.slideNext()}>
+          onClick={() => mainSwiper.slideNext()} aria-label="Следующий слайд">
           <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             {/* eslint-disable-next-line max-len */}
             <rect width="32" height="32" rx="16" transform="matrix(-1 0 0 1 32 0)" fill="white" fillOpacity="0.4">
@@ -48,7 +48,7 @@ function Gallery({ data }) {
           </svg>
         </button>
         <button className={`${styles["slider-controls"]} ${styles["slider-controls__next"]}`}
-          onClick={() => mainSwiper.slidePrev()}>
+          onClick={() => mainSwiper.slidePrev()} aria-label="Предыдущий слайд">
           <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="32" height="32" rx="16" fill="white" fillOpacity="0.4"></rect>
             {/* eslint-disable-next-line max-len */}

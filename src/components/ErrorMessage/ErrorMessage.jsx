@@ -23,7 +23,8 @@ function ErrorMessage({ data }) {
         <p>{authErrorMsg}</p>
         <p>Попробуйте <span>перезагрузить</span> страницу через некоторое время.</p>
       </div>
-      <button className={styles["error-btn"]} onClick={reloadPage}>Ctrl + R</button>
+      <button className={styles["error-btn"]} onClick={reloadPage}
+        aria-label="Перезагрузить страницу">Ctrl + R</button>
     </div>
   );
 }

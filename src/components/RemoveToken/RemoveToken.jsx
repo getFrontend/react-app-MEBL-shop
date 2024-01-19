@@ -18,7 +18,8 @@ function RemoveToken() {
   return (
     <div className="wrapper">
       <div className="text"> <span className="token">{accessToken}</span></div>
-      <button className="button-reset" onClick={reset}>Обновить токен</button>
+      <button className="button-reset" onClick={reset}
+        aria-label="Обновить токен">Обновить токен</button>
       <Link className="button-home" to="/">На главную</Link>
     </div>
   );
