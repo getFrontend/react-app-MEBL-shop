@@ -16,14 +16,16 @@ function Gallery({ data }) {
 
   let isFreeMode = false;
   let isLoop = false;
+  let isGrab = "off";
 
   if (data?.images.length > 1) {
     isFreeMode = true;
     isLoop = true;
+    isGrab = "on";
   }
 
   return (
-    <div className={styles["gallery"]}>
+    <div className={styles["gallery"]} data-grab={isGrab}>
       <div className={styles["slider-main"]}>
         {data?.images.length ? (
           <Swiper

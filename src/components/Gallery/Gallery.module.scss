@@ -43,11 +43,6 @@
   align-items: center;
   overflow: hidden;
   border-radius: 16px;
-  cursor: grab;
-
-  &:active {
-    cursor: grabbing;
-  }
 }
 
 .slide-thumbnail {
@@ -136,4 +131,16 @@
       border-radius: 50%;
     }
   }
+}
+
+[data-grab=on] .slide {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+[data-grab=off] .slide {
+  cursor: auto;
 }
