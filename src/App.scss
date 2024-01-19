@@ -1,17 +1,3 @@
-main {
-  position: relative;
-  flex-grow: 1;
-  padding-bottom: 80px;
-
-  @media (min-width: 580px) {
-    padding-bottom: 100px;
-  }
-
-  @media (min-width: 920px) {
-    padding-bottom: 100px;
-  }
-}
-
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
