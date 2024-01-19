@@ -24,6 +24,7 @@ function Gallery({ data }) {
             onSwiper={setMainSwiper}
             spaceBetween={10}
             freeMode={true}
+            loop={true}
           >
             {data.images.map((img, index) => (
               <SwiperSlide className={styles["slide"]} key={index}>
