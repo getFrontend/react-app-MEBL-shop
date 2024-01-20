@@ -11,10 +11,8 @@ function ButtonFavorite({ className, id }) {
   const handleFavoriteClick = () => {
     if (isFavorite) {
       dispatch(removeFavorite(id));
-      console.log("Товар удалён из избранного");
     } else {
       dispatch(addFavorite(id));
-      console.log("Товар добавлен в избранное");
     }
   };
 
