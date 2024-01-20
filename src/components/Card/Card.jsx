@@ -4,7 +4,7 @@ import "swiper/css";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProduct, is404ErrorProduct } from "../../store/product/product.slice";
+import { fetchProduct } from "../../store/product/product.slice";
 import Gallery from "../Gallery/Gallery";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
@@ -19,13 +19,14 @@ function Card() {
     data,
     loading,
     error: errorProduct,
+    statusCode
   } = useSelector(state => state.product);
 
   useEffect(() => {
     dispatch(fetchProduct(productId));
   }, [dispatch, productId]);
 
-  if (is404ErrorProduct) {
+  if (statusCode === 404) {
     return (
       <Page404 />
     );
@@ -36,7 +37,6 @@ function Card() {
       <Loader />
     );
   }
-
 
   if (errorProduct) {
     const errorData = {
