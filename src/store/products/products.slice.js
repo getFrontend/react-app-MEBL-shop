@@ -3,12 +3,21 @@ import { API_URL_PRODUCTS } from "../api";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async (_, thunkAPI) => {
+  async (params, thunkAPI) => {
     const state = thunkAPI.getState();
     const token = state.auth.accessToken;
     const LIMIT_DEFAULT = 12;
 
-    const response = await fetch(`${API_URL_PRODUCTS}/?limit=${LIMIT_DEFAULT}`, {
+    const queryParams = new URLSearchParams();
+    if (params) {
+      for (const key in params) {
+        if (Object.hasOwnProperty.call(params, key) && params[key]) {
+          queryParams.append(key, params[key]);
+        }
+      }
+    }
+
+    const response = await fetch(`${API_URL_PRODUCTS}?${queryParams}&limit=${LIMIT_DEFAULT}`, {
       headers: {
         "Authorization": `Bearer ${token}`
       }
@@ -32,7 +41,8 @@ const initialState = {
   data: [],
   loading: false,
   error: null,
-  statusCode: null
+  statusCode: null,
+  pagination: null
 };
 
 const productsSlice = createSlice({
@@ -45,9 +55,16 @@ const productsSlice = createSlice({
         state.loading = true;
         state.error = null;
         state.statusCode = null;
+        state.pagination = null;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.data = action.payload;
+        if (Array.isArray(action.payload)) {
+          state.data = action.payload;
+          state.pagination = null;
+        } else {
+          state.data = action.payload.data;
+          state.pagination = action.payload.pagination;
+        }
         state.loading = false;
         state.error = null;
         state.statusCode = null;
@@ -56,6 +73,7 @@ const productsSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
         state.statusCode = action.payload?.status;
+        state.pagination = null;
       });
   }
 });
