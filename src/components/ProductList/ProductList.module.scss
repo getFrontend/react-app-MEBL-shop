@@ -1,0 +1,17 @@
+.list {
+  display: grid;
+  gap: 50px 8px;
+  justify-content: space-evenly;
+  grid-template-columns: repeat(auto-fit, 140px);
+
+  @media (min-width: 580px) {
+    gap: 65px 10px;
+    grid-template-columns: repeat(auto-fit, 230px);
+  }
+  @media (min-width: 820px) {
+    gap: 81px 16px;
+    grid-template-columns: repeat(auto-fit, 302px);
+  }
+}
+
+// .item {}
