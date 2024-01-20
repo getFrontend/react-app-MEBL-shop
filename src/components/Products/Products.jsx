@@ -12,7 +12,7 @@ function Products(props) {
   const dispatch = useDispatch();
   const [searchParam] = useSearchParams();
   const category = searchParam.get("category");
-  const search = searchParam.get("search");
+  const search = searchParam.get("q");
 
   const {
     data,

@@ -9,7 +9,7 @@ function SearchForm(props) {
     const searchQUery = event.target.search.value;
 
     if (searchQUery.trim()) {
-      navigate(`/search?search=${encodeURIComponent(searchQUery)}`);
+      navigate(`/search?q=${encodeURIComponent(searchQUery)}`);
       event.target.reset();
     }
   };
