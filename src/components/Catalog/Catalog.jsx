@@ -48,7 +48,7 @@ function Catalog(props) {
         <ul className={styles["catalog__list"]}>
           {data.map((item, index) => (
             <li className={styles["catalog__item"]} key={index}>
-              <Link className={styles["catalog__link"]} to={`/category?slug=${item}`}>
+              <Link className={styles["catalog__link"]} to={`/category?category=${item}`}>
                 <img
                   className={styles["catalog__icon"]}
                   src={getCatalogIcon(index)}
