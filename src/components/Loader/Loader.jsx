@@ -2,9 +2,11 @@ import styles from "./Loader.module.scss";
 
 function Loader() {
   return (
-    <div className={styles["loader-container"]}>
-      <div className={styles["loader"]}></div>
-    </div>
+    <>
+      <div className={styles["loader-container"]}>
+        <div className={styles["spinner"]}></div>
+      </div>
+    </>
   );
 }
 
