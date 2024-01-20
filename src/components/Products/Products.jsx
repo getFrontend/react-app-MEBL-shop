@@ -13,7 +13,8 @@ function Products(props) {
   const {
     data,
     loading,
-    error: errorProducts
+    error: errorProducts,
+    statusCode
   } = useSelector(state => state.products);
 
   useEffect(() => {
@@ -26,13 +27,13 @@ function Products(props) {
     );
   }
 
-  if (errorProducts) {
+  if (errorProducts && statusCode !== 401) {
     const errorData = {
       path: "products",
       errorMsg: errorProducts
     };
     return (
-      <ErrorMessage data={errorData}/>
+      <ErrorMessage data={errorData} />
     );
   }
 

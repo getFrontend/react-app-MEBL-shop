@@ -19,6 +19,7 @@ function Catalog(props) {
     data,
     loading,
     error: errorCategories,
+    statusCode
   } = useSelector(state => state.categories);
 
   useEffect(() => {
@@ -31,13 +32,13 @@ function Catalog(props) {
     );
   }
 
-  if (errorCategories) {
+  if (errorCategories && statusCode !== 401) {
     const errorData = {
       path: "categories",
       errorMsg: errorCategories
     };
     return (
-      <ErrorMessage data={errorData}/>
+      <ErrorMessage data={errorData} />
     );
   }
 

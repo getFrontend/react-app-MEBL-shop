@@ -31,7 +31,8 @@ export const fetchProducts = createAsyncThunk(
 const initialState = {
   data: [],
   loading: false,
-  error: null
+  error: null,
+  statusCode: null
 };
 
 const productsSlice = createSlice({
@@ -43,15 +44,18 @@ const productsSlice = createSlice({
       .addCase(fetchProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.statusCode = null;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.data = action.payload;
         state.loading = false;
         state.error = null;
+        state.statusCode = null;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+        state.statusCode = action.payload?.status;
       });
   }
 });
