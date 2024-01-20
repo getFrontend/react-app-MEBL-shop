@@ -1,8 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./SearchForm.module.scss";
 
 function SearchForm(props) {
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const searchQUery = event.target.search.value;
+
+    if (searchQUery.trim()) {
+      navigate(`/search?search=${encodeURIComponent(searchQUery)}`);
+      event.target.reset();
+    }
+  };
+
   return (
-    <form className={`${styles["form"]} ${props.className}`} method="get">
+    <form className={`${styles["form"]} ${props.className}`} method="get" onSubmit={handleSubmit}>
       <input className={styles["input"]}
         type="search"
         name="search"
