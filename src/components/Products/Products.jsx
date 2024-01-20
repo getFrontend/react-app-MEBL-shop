@@ -6,9 +6,13 @@ import { fetchProducts } from "../../store/products/products.slice";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import ProductList from "../ProductList/ProductList";
+import { useSearchParams } from "react-router-dom";
 
 function Products(props) {
   const dispatch = useDispatch();
+  const [searchParam] = useSearchParams();
+  const category = searchParam.get("category");
+  const search = searchParam.get("search");
 
   const {
     data,
@@ -18,8 +22,8 @@ function Products(props) {
   } = useSelector(state => state.products);
 
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    dispatch(fetchProducts({ category, search }));
+  }, [dispatch, category, search]);
 
   if (loading || Object.keys(data).length === 0) {
     return (
