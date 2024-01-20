@@ -21,7 +21,7 @@ function Products(props) {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (loading) {
+  if (loading || Object.keys(data).length === 0) {
     return (
       <Loader />
     );
