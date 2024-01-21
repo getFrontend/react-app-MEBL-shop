@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
     )
   },
   {
-    path: "/favourite",
+    path: "/favorite",
     element: (
       <>
         <Header />

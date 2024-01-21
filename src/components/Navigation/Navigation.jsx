@@ -4,7 +4,7 @@ import styles from "./Navigation.module.scss";
 function Navigation(props) {
   return (
     <nav className={`${styles["control"]} ${props.className}`}>
-      <Link className={styles["link"]} to="/favourite">
+      <Link className={styles["link"]} to="/favorite">
         <span className={styles["link-text"]}>Избранное</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
           {/* eslint-disable-next-line max-len */}
