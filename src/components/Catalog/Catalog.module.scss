@@ -70,6 +70,7 @@
 
     &_active {
       pointer-events: none;
+      color: var(--color-white) !important;
     }
 
     &:active {

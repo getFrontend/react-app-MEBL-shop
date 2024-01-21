@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { fetchCategories } from "../../store/categories/categories.slice";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Catalog(props) {
   // const defaultData = [
@@ -14,6 +14,12 @@ function Catalog(props) {
   // ];
 
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  const handleCategory = (category) => {
+    const isCategory = location.search.includes(encodeURIComponent(category));
+    return isCategory;
+  };
 
   const {
     data,
@@ -48,7 +54,9 @@ function Catalog(props) {
         <ul className={styles["catalog__list"]}>
           {data.map((item, index) => (
             <li className={styles["catalog__item"]} key={index}>
-              <Link className={styles["catalog__link"]} to={`/category?category=${item}`}>
+              <Link className={handleCategory(item) ?
+                `${styles["catalog__link"]} ${styles["catalog__link_active"]}` :
+                `${styles["catalog__link"]}`} to={`/category?category=${item}`}>
                 <img
                   className={styles["catalog__icon"]}
                   src={getCatalogIcon(index)}
