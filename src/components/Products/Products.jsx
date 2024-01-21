@@ -6,7 +6,7 @@ import { fetchProducts } from "../../store/products/products.slice";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import ProductList from "../ProductList/ProductList";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useMatch, useSearchParams } from "react-router-dom";
 import NotFoundProduct from "../NotFoundProduct/NotFoundProduct";
 
 function Products(props) {
@@ -17,6 +17,15 @@ function Products(props) {
   const list = searchParam.get("list");
   const location = useLocation();
 
+  const { favoriteList } = useSelector(state => state.favorite);
+  const match = useMatch("/favorite");
+
+  console.log("match = ", match);
+
+  if (match) {
+    searchParam.set("list", favoriteList.join(","));
+  }
+
   let titleMain = "Лучшие новинки каталога 2024";
 
   const {
@@ -25,7 +34,6 @@ function Products(props) {
     error: errorProducts,
     statusCode
   } = useSelector(state => state.products);
-  const { favoriteList } = useSelector(state => state.favorite);
 
   useEffect(() => {
     dispatch(fetchProducts({ list, category, search }));
@@ -57,9 +65,7 @@ function Products(props) {
     titleMain = `Категория: «${category}»`;
   }
 
-  if (location.pathname === "/favourite") {
-    searchParam.set("list", favoriteList.join(","));
-    console.log("List:", favoriteList.join(","));
+  if (location.pathname === "/favorite") {
     titleMain = "Избранное";
   }
 
