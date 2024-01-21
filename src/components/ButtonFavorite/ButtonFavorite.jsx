@@ -1,6 +1,7 @@
 import "./ButtonFavorite.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../../store/favorites/favorites.slice";
+import { useToast } from "@chakra-ui/react";
 
 function ButtonFavorite({ className, id }) {
   const dispatch = useDispatch();
@@ -8,11 +9,35 @@ function ButtonFavorite({ className, id }) {
 
   const isFavorite = favoriteList.includes(id);
 
+  const toast = useToast();
+
+  const addFavoriteToast = () => {
+    toast({
+      description: "Товар добавлен избранное!",
+      status: "success",
+      variant: "left-accent",
+      duration: 2000,
+      isClosable: true,
+    });
+  };
+
+  const removeFavoriteToast = () => {
+    toast({
+      description: "Товар больше не в избранном!",
+      variant: "left-accent",
+      duration: 2000,
+      isClosable: true,
+      bg: "red.500"
+    });
+  };
+
   const handleFavoriteClick = () => {
     if (isFavorite) {
       dispatch(removeFavorite(id));
+      removeFavoriteToast();
     } else {
       dispatch(addFavorite(id));
+      addFavoriteToast();
     }
   };
 
