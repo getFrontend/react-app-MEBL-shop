@@ -1,0 +1,28 @@
+.not-found {
+  margin: 2rem auto;
+  padding-block: 30px;
+  max-width: 640px;
+  display: grid;
+  place-content: center;
+  gap: 1rem;
+  border: 1px dashed var(--color-mebl);
+  border-radius: 32px;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(1.25rem, 0.6235rem + 3.1325vw, 4.5rem);
+  color: var(--color-mebl);
+}
+
+// .text {}
+
+.query {
+  color: var(--color-mebl-dark);
+  font-size: clamp(0.875rem, 0.6581rem + 1.0843vw, 2rem);
+  font-weight: 700;
+}
+
+.info p + p {
+  padding-top: 1rem;
+}
