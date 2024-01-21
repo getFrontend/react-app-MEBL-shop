@@ -6,13 +6,16 @@ import { fetchProducts } from "../../store/products/products.slice";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import ProductList from "../ProductList/ProductList";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
+import NotFoundProduct from "../NotFoundProduct/NotFoundProduct";
 
 function Products(props) {
   const dispatch = useDispatch();
   const [searchParam] = useSearchParams();
   const category = searchParam.get("category");
   const search = searchParam.get("q");
+  const location = useLocation();
+  let titleMain = "Лучшие новинки каталога 2024";
 
   const {
     data,
@@ -24,6 +27,12 @@ function Products(props) {
   useEffect(() => {
     dispatch(fetchProducts({ category, search }));
   }, [dispatch, category, search]);
+
+  if ((location.pathname === "/search") && (data.length === 0) && !loading) {
+    return (
+      <NotFoundProduct search={search} />
+    );
+  }
 
   if (loading || Object.keys(data).length === 0) {
     return (
@@ -41,10 +50,22 @@ function Products(props) {
     );
   }
 
+  if (location.pathname === "/category") {
+    titleMain = `Категория: «${category}»`;
+  }
+
+  if (location.pathname === "/favourite") {
+    titleMain = "Избранное";
+  }
+
+  if (location.pathname === "/search") {
+    titleMain = `Поиск: «${search}»`;
+  }
+
   return (
     <section className={styles["products"]}>
       <Container>
-        <h2 className={`${styles["products__title"]}`}>Лучшие новинки каталога 2024</h2>
+        <h2 className={`${styles["products__title"]}`}>{titleMain}</h2>
         <ProductList data={data} />
       </Container>
     </section>
