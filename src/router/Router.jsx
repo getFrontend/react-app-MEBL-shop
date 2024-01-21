@@ -8,6 +8,7 @@ import Cart from "../components/Cart/Cart";
 import Card from "../components/Card/Card";
 import Page404 from "../components/Page404/Page404";
 import RemoveToken from "../components/RemoveToken/RemoveToken";
+import Favorites from "../components/Favorites/Favorites";
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ export const router = createBrowserRouter([
         <Header />
         <Main>
           <Catalog />
-          <Products />
+          <Favorites />
         </Main>
         <Footer />
       </>
@@ -89,7 +90,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/token-reset",
-    element: <RemoveToken/>
+    element: <RemoveToken />
   },
   {
     path: "*",

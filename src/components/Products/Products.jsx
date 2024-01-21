@@ -14,19 +14,8 @@ function Products(props) {
   const [searchParam] = useSearchParams();
   const category = searchParam.get("category");
   const search = searchParam.get("q");
-  const list = searchParam.get("list");
   const location = useLocation();
-
-  const { favoriteList } = useSelector(state => state.favorite);
-  const match = useMatch("/favorite");
-
-  console.log("match = ", match);
-
-  if (match) {
-    searchParam.set("list", favoriteList.join(","));
-  }
-
-  let titleMain = "Лучшие новинки каталога 2024";
+  const matchFavorite = useMatch("/favorite");
 
   const {
     data,
@@ -36,8 +25,10 @@ function Products(props) {
   } = useSelector(state => state.products);
 
   useEffect(() => {
-    dispatch(fetchProducts({ list, category, search }));
-  }, [dispatch, category, search, list]);
+    if (!matchFavorite) {
+      dispatch(fetchProducts({ category, search }));
+    }
+  }, [dispatch, category, search, matchFavorite]);
 
   if ((location.pathname === "/search") && (data.length === 0) && !loading) {
     return (
@@ -45,7 +36,7 @@ function Products(props) {
     );
   }
 
-  if (loading || Object.keys(data).length === 0) {
+  if (loading || !data) {
     return (
       <Loader />
     );
@@ -61,14 +52,13 @@ function Products(props) {
     );
   }
 
+  let titleMain = "Лучшие новинки каталога 2024";
   if (location.pathname === "/category") {
     titleMain = `Категория: «${category}»`;
   }
-
   if (location.pathname === "/favorite") {
     titleMain = "Избранное";
   }
-
   if (location.pathname === "/search") {
     titleMain = `Поиск: «${search}»`;
   }
