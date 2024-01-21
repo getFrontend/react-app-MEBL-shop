@@ -13,7 +13,7 @@ function ButtonFavorite({ className, id }) {
 
   const addFavoriteToast = () => {
     toast({
-      description: "Товар добавлен избранное!",
+      description: "Товар добавлен в избранное!",
       status: "success",
       variant: "left-accent",
       duration: 2000,
