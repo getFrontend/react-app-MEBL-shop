@@ -14,7 +14,9 @@ function Products(props) {
   const [searchParam] = useSearchParams();
   const category = searchParam.get("category");
   const search = searchParam.get("q");
+  const list = searchParam.get("list");
   const location = useLocation();
+
   let titleMain = "Лучшие новинки каталога 2024";
 
   const {
@@ -23,10 +25,11 @@ function Products(props) {
     error: errorProducts,
     statusCode
   } = useSelector(state => state.products);
+  const { favoriteList } = useSelector(state => state.favorite);
 
   useEffect(() => {
-    dispatch(fetchProducts({ category, search }));
-  }, [dispatch, category, search]);
+    dispatch(fetchProducts({ list, category, search }));
+  }, [dispatch, category, search, list]);
 
   if ((location.pathname === "/search") && (data.length === 0) && !loading) {
     return (
@@ -55,6 +58,8 @@ function Products(props) {
   }
 
   if (location.pathname === "/favourite") {
+    searchParam.set("list", favoriteList.join(","));
+    console.log("List:", favoriteList.join(","));
     titleMain = "Избранное";
   }
 
