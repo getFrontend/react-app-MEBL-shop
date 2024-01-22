@@ -23,3 +23,23 @@
     }
   }
 }
+
+.count {
+  transform: translateY(-24px);
+  margin-bottom: 24px;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 32px;
+  background-color: var(--color-light);
+  font-size: 0.8em;
+  display: none;
+
+  & span {
+    font-size: 1.2em;
+    color: var(--color-mebl-dark);
+  }
+
+  @media (min-width: 1120px) {
+    display: inline-block;
+  }
+}

@@ -17,6 +17,8 @@ function Products(props) {
   const location = useLocation();
   const matchFavorite = useMatch("/favorite");
 
+  let isActive = false;
+
   const {
     data,
     loading,
@@ -55,6 +57,7 @@ function Products(props) {
   let titleMain = "Лучшие новинки каталога 2024";
   if (location.pathname === "/category") {
     titleMain = `Категория: «${category}»`;
+    isActive = true;
   }
   if (location.pathname === "/favorite") {
     titleMain = "Избранное";
@@ -67,9 +70,17 @@ function Products(props) {
     <section className={styles["products"]}>
       <Container>
         <h2 className={`${styles["products__title"]}`}>{titleMain}</h2>
+        {isActive ?
+          (
+            <div className={styles["count"]}>Всего товаров:&nbsp;
+              <span>{data?.length}</span>
+            </div>
+          ) :
+          (<></>)
+        }
         <ProductList data={data} />
       </Container>
-    </section>
+    </section >
   );
 }
 
