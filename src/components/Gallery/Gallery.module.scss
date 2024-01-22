@@ -1,5 +1,4 @@
 .gallery {
-  // overflow: hidden;
   margin-bottom: 32px;
 
   @media (min-width: 580px) {
@@ -15,25 +14,9 @@
 .slider-main {
   position: relative;
   width: 100%;
-  height: 74vw;
-  max-height: 586px;
-  overflow: hidden;
-  border-radius: 16px;
 
   @media (min-width: 580px) {
     margin-bottom: 14px;
-    height: 92vw;
-  }
-
-  @media (min-width: 820px) {
-    height: 60vw;
-    max-height: 512px;
-  }
-
-  @media (min-width: 1120px) {
-    height: 48vw;
-    // max-height: 688px;
-    // min-width: 832px;
   }
 }
 
@@ -53,36 +36,24 @@
 .slide-thumbnail {
   border-radius: 16px;
   overflow: hidden;
+  cursor: zoom-in;
 }
 
 .product__image,
 .product__image-thumbnail {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
 }
 
 .slider-thumbnails {
   display: none;
-  height: 22vw;
-  max-height: 138px;
-
-  & .slide {
-    cursor: zoom-in;
-  }
+  border-radius: 16px;
+  overflow: hidden;
 
   @media (min-width: 580px) {
     display: block;
     margin-top: 14px;
-  }
-
-  @media (min-width: 820px) {
-    height: 12vw;
-    max-height: 120px;
-  }
-
-  @media (min-width: 1120px) {
-    max-height: 162px;
   }
 }
 

@@ -86,7 +86,7 @@ function Gallery({ data }) {
               slidesPerView={4}
             >
               {data?.images.map((img, index) => (
-                <SwiperSlide className={styles["slide"]} key={index}>
+                <SwiperSlide className={styles["slide-thumbnail"]} key={index}>
                   <img className={styles["product__image-thumbnail"]}
                     src={`${API_URL}${img}`} alt={data.name} />
                 </SwiperSlide>
