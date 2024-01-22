@@ -16,6 +16,11 @@
       transition: fill 0.3s ease-in-out;
   }
 
+  & .active {
+    color: var(--color-mebl);
+    fill: var(--color-mebl);
+  }
+
   &:hover,
   &:active {
       color: var(--color-mebl);
