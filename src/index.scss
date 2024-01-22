@@ -180,3 +180,27 @@ label {
 legend {
   display: block;
 }
+
+/* Utils */
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  animation: smoothScrollHeader 1s forwards;
+}
+
+@keyframes smoothScrollHeader {
+  0% {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
