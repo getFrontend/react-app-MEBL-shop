@@ -20,6 +20,10 @@
     outline: 1px solid #DFE3EB;
   }
 
+  &:focus {
+    filter: drop-shadow(0 0 .5em var(--color-mebl));
+  }
+
   &:focus-visible {
     outline: 1px solid var(--color-mebl);
   }
