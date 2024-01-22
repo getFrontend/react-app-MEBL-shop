@@ -8,9 +8,10 @@ import "./Header.scss";
 export const Header = () => {
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
   const headerRef = useRef(null);
+  const SOME_CONSTANT = 30;
 
   const handleScroll = (elTopOffset, elHeight) => {
-    if (window.scrollY > (elTopOffset + elHeight)) {
+    if (window.scrollY > (elTopOffset + elHeight + SOME_CONSTANT)) {
       setSticky({ isSticky: true, offset: elHeight });
     } else {
       setSticky({ isSticky: false, offset: 0 });
