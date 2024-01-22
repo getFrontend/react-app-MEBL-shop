@@ -7,15 +7,19 @@ import "./Header.scss";
 
 export const Header = () => {
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
+  const [lastScrollY, setLastScrollY] = useState(0);
   const headerRef = useRef(null);
-  const SOME_CONSTANT = 30;
+  const SOME_CONSTANT = 200;
 
   const handleScroll = (elTopOffset, elHeight) => {
-    if (window.scrollY > (elTopOffset + elHeight + SOME_CONSTANT)) {
+    if (window.scrollY > (elTopOffset + elHeight + SOME_CONSTANT) &&
+      (window.scrollY > lastScrollY)) {
       setSticky({ isSticky: true, offset: elHeight });
     } else {
       setSticky({ isSticky: false, offset: 0 });
     }
+
+    setLastScrollY(window.scrollY);
   };
 
   useEffect(() => {
@@ -29,7 +33,7 @@ export const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScrollEvent);
     };
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <header className={`header${sticky.isSticky ? " sticky" : ""}`} ref={headerRef}>
