@@ -5,8 +5,13 @@
   right:0;
   top:0;
   bottom:0;
+  padding-block: 30px;
   display: grid;
   place-content: center;
+
+  @media (min-width: 820px) {
+    min-height: 400px;
+  }
 }
 
 .spinner {
