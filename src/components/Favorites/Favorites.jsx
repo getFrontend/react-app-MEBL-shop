@@ -9,13 +9,11 @@ import { getCatalogIcon } from "../../helpers/getCatalogIcon";
 function Favorites() {
   const dispatch = useDispatch();
   const favoriteList = useSelector((state) => state.favorite.favoriteList);
+  const params = { list: favoriteList };
 
   useEffect(() => {
-    if (favoriteList) {
-      const params = { list: favoriteList };
-      dispatch(fetchProducts(params));
-    }
-  }, [dispatch, favoriteList]);
+    dispatch(fetchProducts(params));
+  }, [dispatch]);
 
   const image = getCatalogIcon(1);
 
