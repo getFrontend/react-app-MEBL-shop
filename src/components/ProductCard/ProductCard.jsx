@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { API_URL } from "../../store/api";
 import styles from "./ProductCard.module.scss";
 import ButtonFavorite from "../ButtonFavorite/ButtonFavorite";
+import ButtonAddToCart from "../ButtonAddToCart/ButtonAddToCart";
 
 function ProductCard({ id, images: [image], name: title, price }, ...props) {
   return (
@@ -20,8 +21,7 @@ function ProductCard({ id, images: [image], name: title, price }, ...props) {
           {parseInt(price).toLocaleString()}&nbsp;₴
         </span>
       </div>
-      <button className={styles["card__button-cart"]} data-id={id}
-        aria-label="Добавить в корзину">В корзину</button>
+      <ButtonAddToCart className={styles["card__button-cart"]} id={id} />
       <ButtonFavorite className={styles["favorite"]} id={id} />
     </article>
   );

@@ -11,6 +11,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Specifications from "../Specifications/Specifications";
 import Page404 from "../Page404/Page404";
 import ButtonFavorite from "../ButtonFavorite/ButtonFavorite";
+import ButtonAddToCart from "../ButtonAddToCart/ButtonAddToCart";
 
 function Card() {
   const { productId } = useParams();
@@ -64,8 +65,7 @@ function Card() {
                 <p className={styles["article"]}>арт. {data.article}</p>
                 <Specifications data={data} />
                 <div className={styles["buttons"]}>
-                  <button className={styles["buttons-cart"]}
-                    data-id={productId} aria-label="Добавить в корзину">В корзину</button>
+                  <ButtonAddToCart className={styles["buttons-cart"]} id={data.id} />
                   <ButtonFavorite className={styles["favorite"]} id={data.id} />
                 </div>
               </div>
