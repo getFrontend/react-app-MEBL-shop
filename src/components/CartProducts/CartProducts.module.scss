@@ -1,0 +1,133 @@
+.products {
+  grid-area: content;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @media (min-width: 880px) {
+    margin-bottom: 0;
+  }
+}
+
+.product {
+  display: grid;
+  align-items: center;
+  gap: 4px 8px;
+  grid-template-columns: 25vw min-content 1fr;
+  grid-template-rows: min-content min-content 1fr;
+  grid-template-areas:
+    "img title title"
+    "img article article"
+    "img control price";
+
+  @media (min-width: 480px) {
+    grid-template-columns: 120px 1fr min-content;
+    gap: 6px 12px;
+    grid-template-areas:
+      "img title price"
+      "img article article"
+      "img control .";
+  }
+
+  @media (min-width: 880px) {
+    max-width: 514px;
+  }
+}
+
+.link {
+  grid-area: img;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color .3s ease;
+  outline: none;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--color-mebl);
+  }
+
+}
+
+.img {
+  border-radius: 16px;
+  transition: transform .3s ease;
+ 
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.titleProduct {
+  grid-area: title;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+
+  @media (min-width: 480px) {
+    font-size: 16px;
+    padding-top: 12px;
+  }
+}
+
+.price {
+  grid-area: price;
+  color: var(--color-dark);
+
+  @media (min-width: 480px) {
+    align-self: start;
+    justify-self: end;
+    font-size: 16px;
+    padding-top: 12px;
+  }
+}
+
+.article {
+  grid-area: article;
+  color: var(--color-dark-gray);
+  font-size: 9px;
+
+  @media (min-width: 480px) {
+    font-size: 12px;
+  }
+}
+
+.productControl {
+  grid-area: control;
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 5px 11px;
+  border-radius: 32px;
+  border: 1px solid var(--color-mebl);
+  font-size: 1.2em;
+
+  @media (min-width: 480px) {
+    align-self: end;
+  }
+}
+
+.productBtn {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  outline: none;
+
+  &:hover {
+    color: var(--color-mebl);
+  }
+
+  &:focus-visible {
+    border-color: var(--color-mebl);
+  }
+}
+
+.productCount {
+  min-width: 14px;
+  text-align: center;
+} 
