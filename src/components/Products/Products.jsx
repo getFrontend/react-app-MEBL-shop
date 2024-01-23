@@ -82,7 +82,9 @@ function Products(props) {
           (<></>)
         }
         <ProductList data={data} />
-        {pagination ? <Pagination pagination={pagination} /> : <></>}
+        {pagination && (pagination.totalProducts > pagination.limit) ?
+          <Pagination pagination={pagination} /> :
+          <></>}
       </Container>
     </section >
   );
