@@ -76,7 +76,7 @@ function Products(props) {
         {isActive ?
           (
             <div className={styles["count"]}>Всего товаров:&nbsp;
-              <span>{data?.length}</span>
+              <span>{pagination ? pagination.totalProducts : data?.length}</span>
             </div>
           ) :
           (<></>)
