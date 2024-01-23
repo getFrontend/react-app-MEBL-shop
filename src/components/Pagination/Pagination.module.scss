@@ -1,0 +1,39 @@
+.pagination {
+  width: 200px;
+  margin: 0 auto;
+  padding-top: 32px;
+}
+
+.bar {
+  background-color: var(--color-light);
+  height: 6px;
+  width: 100%;
+  border-radius: 3px;
+  margin-bottom: 16px;
+}
+
+.barWidth {
+  background-color: var(--color-mebl);
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.36s ease-in-out;
+}
+
+.arrows {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+} 
