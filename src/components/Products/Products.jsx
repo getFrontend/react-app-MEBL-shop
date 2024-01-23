@@ -14,7 +14,7 @@ function Products(props) {
   const [searchParam] = useSearchParams();
   const category = searchParam.get("category");
   const search = searchParam.get("q");
-  const location = useLocation();
+  const { pathname } = useLocation();
   const matchFavorite = useMatch("/favorite");
 
   let isActive = false;
@@ -32,7 +32,7 @@ function Products(props) {
     }
   }, [dispatch, category, search, matchFavorite]);
 
-  if ((location.pathname === "/search") && (data.length === 0) && !loading) {
+  if ((pathname === "/search") && (data.length === 0) && !loading) {
     return (
       <NotFoundProduct search={search} />
     );
@@ -55,14 +55,14 @@ function Products(props) {
   }
 
   let titleMain = "Лучшие новинки каталога 2024";
-  if (location.pathname === "/category") {
+  if (pathname === "/category") {
     titleMain = `Категория: «${category}»`;
     isActive = true;
   }
-  if (location.pathname === "/favorite") {
+  if (pathname === "/favorite") {
     titleMain = "Избранное";
   }
-  if (location.pathname === "/search") {
+  if (pathname === "/search") {
     titleMain = `Поиск: «${search}»`;
   }
 
