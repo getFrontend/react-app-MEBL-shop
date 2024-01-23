@@ -20,7 +20,7 @@ function ErrorMessage({ data }) {
     <div className={styles["error"]}>
       <h2 className={styles["title"]}>Ой! Возникла ошибка 😢</h2>
       <div className={styles["text"]}>
-        <p>{authErrorMsg}</p>
+        <p>{authErrorMsg ? authErrorMsg : ""}</p>
         <p>Попробуйте <span>перезагрузить</span> страницу через некоторое время.</p>
       </div>
       <button className={styles["error-btn"]} onClick={reloadPage}
