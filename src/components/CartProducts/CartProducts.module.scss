@@ -53,7 +53,7 @@
 .img {
   border-radius: 16px;
   transition: transform .3s ease;
- 
+
   &:hover {
     transform: scale(1.02);
   }
@@ -100,10 +100,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 5px 11px;
+  padding: 5px 8px;
   border-radius: 32px;
   border: 1px solid var(--color-mebl);
-  font-size: 1.2em;
 
   @media (min-width: 480px) {
     align-self: end;
@@ -111,15 +110,19 @@
 }
 
 .productBtn {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   line-height: 20px;
   border: 1px solid transparent;
   border-radius: 10px;
   outline: none;
 
-  &:hover {
-    color: var(--color-mebl);
+  svg {
+    fill: var(--color-mebl-dark);
+
+    &:hover {
+      fill: var(--color-mebl);
+    }
   }
 
   &:focus-visible {
@@ -130,4 +133,5 @@
 .productCount {
   min-width: 14px;
   text-align: center;
-} 
+  font-size: 1.3em;
+}
