@@ -1,0 +1,49 @@
+.cart {
+  padding-top: 24px;
+
+  @media (min-width: 580px) {
+    padding-top: 32px;
+  }
+
+  @media (min-width: 780px) {
+    padding-top: 40px;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-areas: "title" "content" "form" "place";
+
+  @media (min-width: 880px) {
+    grid-template-columns: 1fr 302px;
+    gap: 40px 30px;
+    grid-template-areas: "title ." "content place" "form form";
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1080px) {
+    grid-template-columns: 1fr 408px;
+  }
+}
+
+.title {
+  grid-area: title;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+
+  @media (min-width: 580px) {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+
+  @media (min-width: 880px) {
+    margin-bottom: 0;
+  }
+}
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 26px;
+} 
