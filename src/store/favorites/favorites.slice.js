@@ -19,7 +19,7 @@ const favoriteSlice = createSlice(
       },
       removeFavorite: (state, action) => {
         state.favoriteList = state.favoriteList.filter((id) => id !== action.payload);
-        localStorage.removeItem("favoriteMEBL", JSON.stringify(state.favoriteList));
+        localStorage.setItem("favoriteMEBL", JSON.stringify(state.favoriteList));
       }
     }
   }
