@@ -12,14 +12,14 @@ function Favorites() {
   const [searchParam] = useSearchParams();
   const { pathname } = useLocation();
   const favoriteList = useSelector((state) => state.favorite.favoriteList);
+  const list = favoriteList.join(",");
   const page = searchParam.get("page");
-  const params = { list: favoriteList.join(","), page };
 
   useEffect(() => {
     if (pathname === "/favorite") {
-      dispatch(fetchProducts(params));
+      dispatch(fetchProducts({ list, page }));
     }
-  }, [dispatch, pathname]);
+  }, [dispatch, pathname, page]);
 
   const image = getCatalogIcon(1);
 
