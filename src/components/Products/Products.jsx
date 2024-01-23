@@ -8,6 +8,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import ProductList from "../ProductList/ProductList";
 import { useLocation, useMatch, useSearchParams } from "react-router-dom";
 import NotFoundProduct from "../NotFoundProduct/NotFoundProduct";
+import Pagination from "../Pagination/Pagination";
 
 function Products(props) {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function Products(props) {
 
   const {
     data,
+    pagination,
     loading,
     error: errorProducts,
     statusCode
@@ -80,6 +82,7 @@ function Products(props) {
           (<></>)
         }
         <ProductList data={data} />
+        {pagination ? <Pagination pagination={pagination} /> : <></>}
       </Container>
     </section >
   );
