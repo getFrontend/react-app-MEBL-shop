@@ -14,6 +14,7 @@ function Products(props) {
   const [searchParam] = useSearchParams();
   const category = searchParam.get("category");
   const search = searchParam.get("q");
+  const page = searchParam.get("page");
   const { pathname } = useLocation();
   const matchFavorite = useMatch("/favorite");
 
@@ -28,9 +29,9 @@ function Products(props) {
 
   useEffect(() => {
     if (!matchFavorite) {
-      dispatch(fetchProducts({ category, search }));
+      dispatch(fetchProducts({ category, search, page }));
     }
-  }, [dispatch, category, search, matchFavorite]);
+  }, [dispatch, category, search, page, matchFavorite]);
 
   if ((pathname === "/search") && (data.length === 0) && !loading) {
     return (

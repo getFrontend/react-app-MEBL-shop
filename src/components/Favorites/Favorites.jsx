@@ -5,15 +5,21 @@ import { fetchProducts } from "../../store/products/products.slice";
 import Products from "../Products/Products";
 import { Container } from "../../views/Container/Container";
 import { getCatalogIcon } from "../../helpers/getCatalogIcon";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 function Favorites() {
   const dispatch = useDispatch();
+  const [searchParam] = useSearchParams();
+  const { pathname } = useLocation();
   const favoriteList = useSelector((state) => state.favorite.favoriteList);
-  const params = { list: favoriteList };
+  const page = searchParam.get("page");
+  const params = { list: favoriteList.join(","), page };
 
   useEffect(() => {
-    dispatch(fetchProducts(params));
-  }, [dispatch]);
+    if (pathname === "/favorite") {
+      dispatch(fetchProducts(params));
+    }
+  }, [dispatch, pathname]);
 
   const image = getCatalogIcon(1);
 
