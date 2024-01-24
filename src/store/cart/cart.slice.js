@@ -69,7 +69,6 @@ export const removeProductFromCart = createAsyncThunk(
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify(productID)
       });
       if (!response.ok) {
         throw new Error("Ошибка! Не удалось удалить товар из корзины.");
@@ -173,9 +172,6 @@ const cartSlice = createSlice({
         state.error = null;
       })
       .addCase(removeProductFromCart.fulfilled, (state, action) => {
-        state.products = action.payload.products;
-        state.totalPrice = action.payload.totalPrice;
-        state.totalCount = action.payload.totalCount;
         state.loadingRemove = false;
         state.error = null;
       })
