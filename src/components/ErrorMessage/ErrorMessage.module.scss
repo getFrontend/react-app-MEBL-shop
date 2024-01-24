@@ -19,13 +19,12 @@
 .title {
   margin-bottom: 2rem;
   font-size: clamp(1.25rem, 0.6235rem + 3.1325vw, 4.5rem);
-  opacity: .7;
 }
 
 .text {
   margin-bottom: 1.5rem;
   font-size: clamp(0.875rem, 0.6581rem + 1.0843vw, 2rem);
-  opacity: .4;
+  opacity: .8;
   line-height: 1.6;
 
   & span {
