@@ -72,8 +72,7 @@
   border-color .3s ease-in-out;
 
   &:hover {
-    transform: scale(1.01);
-    border-color: var(--color-mebl-dark);
+    border-color: var(--color-white);
   }
 
   &:focus-visible {
