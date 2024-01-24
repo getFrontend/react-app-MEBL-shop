@@ -2,17 +2,17 @@ import styles from "./ErrorMessage.module.scss";
 
 function ErrorMessage({ data }) {
   let authErrorMsg = `Не удалось загрузить данные!`;
-  console.log(`❗ ${data.errorMsg}`);
+  console.log(`❗ ${data?.errorMsg}`);
 
   const reloadPage = () => {
     location.reload(true);
   };
 
-  if (data.path === "auth") {
+  if (data?.path === "auth") {
     authErrorMsg = "Администратору, необходимо проверить данные для авторизации на сервере.";
   }
 
-  if (data.path === "categories") {
+  if (data?.path === "categories") {
     return;
   }
 
