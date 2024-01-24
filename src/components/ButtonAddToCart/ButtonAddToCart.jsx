@@ -1,14 +1,14 @@
 import { useDispatch } from "react-redux";
-import { addProductToCart, fetchCart } from "../../store/cart/cart.slice";
+import { addProductToCart } from "../../store/cart/cart.slice";
 import { useToast } from "@chakra-ui/react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 function ButtonAddToCart({ className, id }) {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchCart());
+  // }, [dispatch]);
 
   const toast = useToast();
   const addCartToast = () => {
