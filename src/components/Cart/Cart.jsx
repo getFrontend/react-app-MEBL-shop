@@ -7,7 +7,7 @@ import s from "./Cart.module.scss";
 import { useEffect } from "react";
 import { fetchCart } from "../../store/cart/cart.slice";
 import Loader from "../Loader/Loader";
-// import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ function Cart() {
     totalPrice,
     totalCount,
     loadingFetch,
-    // error: errorCart
+    error: errorCart
   } = useSelector(state => state.cart);
 
   useEffect(() => {
@@ -27,9 +27,9 @@ function Cart() {
     return <Loader />;
   }
 
-  // if (errorCart) {
-  //   return <ErrorMessage errorMsg={errorCart || ""} />;
-  // }
+  if (errorCart) {
+    return <ErrorMessage errorMsg={errorCart || ""} />;
+  }
 
   return (
     <section className={s.cart}>
