@@ -8,7 +8,7 @@ import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { Link, useLocation } from "react-router-dom";
 
-function Catalog(props) {
+function Catalog() {
   // const defaultData = [
   //   "Тумбы", "Стулья", "Столы", "Пуфы и банкетки", "Кровати", "Диваны", "Полки", "Стеллажи"
   // ];
@@ -29,8 +29,10 @@ function Catalog(props) {
   } = useSelector(state => state.categories);
 
   useEffect(() => {
-    dispatch(fetchCategories());
-  }, [dispatch]);
+    if (data.length === 0) {
+      dispatch(fetchCategories());
+    }
+  }, [dispatch, data.length]);
 
   if (loading) {
     return (
