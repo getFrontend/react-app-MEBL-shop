@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
 import { getDeclOfNum, titles } from "../../helpers/getDeclOfNum";
 import s from "./CartPlace.module.scss";
 
-function CartPlace({ totalPrice, totalCount }) {
+function CartPlace() {
+  const { totalPrice, totalCount } = useSelector((state) => state.cart);
+
   return (
     <div className={s.place}>
       <h3 className={s.subtitle}>Оформление заказа:</h3>

@@ -13,8 +13,6 @@ function Cart() {
   const dispatch = useDispatch();
   const {
     products,
-    totalPrice,
-    totalCount,
     loadingFetch,
     error: errorCart
   } = useSelector(state => state.cart);
@@ -37,7 +35,7 @@ function Cart() {
         <Container className={s.container}>
           <h2 className={s.title}>Корзина</h2>
           <CartProducts data={products} />
-          <CartPlace totalPrice={totalPrice} totalCount={totalCount} />
+          <CartPlace />
           <CartForm />
         </Container>
       </>) : <Container>В корзине сейчас пусто...</Container>}
