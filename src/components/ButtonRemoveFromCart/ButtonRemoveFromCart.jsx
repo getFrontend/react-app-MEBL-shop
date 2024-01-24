@@ -26,9 +26,6 @@ function ButtonRemoveFromCart({ id }) {
     removeCartToast();
   };
 
-  console.log("isDisabled: ", isDisabled);
-
-
   return (
     <button className={isDisabled ? `${s.disabled}` : ""} onClick={handleCartClick}>Удалить</button>
   );
