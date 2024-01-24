@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { API_URL } from "../../store/api";
 import s from "./CartProducts.module.scss";
+import ButtonRemoveFromCart from "../ButtonRemoveFromCart/ButtonRemoveFromCart";
 
 function CartProducts({ data }) {
   return (
@@ -40,6 +41,7 @@ function CartProducts({ data }) {
                     </svg>
                   </button>
                 </div>
+                <ButtonRemoveFromCart id={item.id} />
               </li>
             ))
           }
