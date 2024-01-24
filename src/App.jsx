@@ -6,6 +6,7 @@ import { router } from "./router/Router";
 import { fetchAccessToken } from "./store/auth/auth.slice";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import Preloader from "./components/Preloader/Preloader";
+import { fetchCart } from "./store/cart/cart.slice";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,6 +19,12 @@ function App() {
   useEffect(() => {
     if (!accessToken) {
       dispatch(fetchAccessToken());
+    }
+  }, [dispatch, accessToken]);
+
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(fetchCart());
     }
   }, [dispatch, accessToken]);
 
