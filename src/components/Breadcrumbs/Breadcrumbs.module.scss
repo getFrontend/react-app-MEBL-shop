@@ -1,0 +1,40 @@
+.breadcrumb {
+  padding-top: 20px;
+
+  @media (min-width: 580px) {
+    padding-top: 24px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 6px;
+    color: #969EAE;
+  }
+
+  &__item {
+    display: flex;
+    gap: 6px;
+
+    &:last-child {
+      pointer-events: none;
+    }
+  }
+
+  &__item:last-child &__separator {
+    display: none;
+  }
+
+  &__link {
+    display: block;
+
+    &:active,
+    &:hover {
+      color: #780096;
+    }
+
+    &:focus-visible {
+      color: #780096;
+      outline-color: #780096;
+    }
+  }
+}
