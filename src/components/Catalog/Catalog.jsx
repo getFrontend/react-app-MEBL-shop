@@ -46,9 +46,9 @@ function Catalog() {
 
   return (
     <nav className={styles["catalog"]}>
-      <Container className={styles["catalog__container"]}>
-        {(data && !loading) ?
-          (
+      {(data && !loading) ?
+        (
+          <Container className={styles["catalog__container"]}>
             <ul className={styles["catalog__list"]}>
               {data.map((item, index) => (
                 <li className={styles["catalog__item"]} key={index}>
@@ -65,9 +65,14 @@ function Catalog() {
                 </li>
               ))}
             </ul>
-          ) :
-          <Skeleton startColor='green.300' endColor='green.100' height="20px" />}
-      </Container>
+          </Container>
+        ) :
+        (
+          <Container>
+            <Skeleton startColor='green.300' endColor='green.100' height="20px" />
+          </Container>
+        )
+      }
     </nav >
   );
 }
