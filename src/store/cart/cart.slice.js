@@ -56,6 +56,31 @@ export const addProductToCart = createAsyncThunk(
   }
 );
 
+export const removeProductFromCart = createAsyncThunk(
+  "cart/removeProductFromCart",
+  async (productID, { getState, rejectWithValue }) => {
+    const state = getState();
+    const token = state.auth.accessToken;
+
+    try {
+      const response = await fetch(`${API_URL}api/cart/products/${productID}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(productID)
+      });
+      if (!response.ok) {
+        throw new Error("Ошибка! Не удалось удалить товар из корзины.");
+      }
+      return await response.json();
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const updateProductToCart = createAsyncThunk(
   "cart/updateProductToCart",
   async (productData, { getState, rejectWithValue }) => {
@@ -126,6 +151,36 @@ const cartSlice = createSlice({
       })
       .addCase(addProductToCart.rejected, (state, action) => {
         state.loadingAdd = false;
+        state.error = action.error.message;
+      })
+      .addCase(updateProductToCart.pending, (state) => {
+        state.loadingUpdate = true;
+        state.error = null;
+      })
+      .addCase(updateProductToCart.fulfilled, (state, action) => {
+        state.products = action.payload.products;
+        state.totalPrice = action.payload.totalPrice;
+        state.totalCount = action.payload.totalCount;
+        state.loadingUpdate = false;
+        state.error = null;
+      })
+      .addCase(updateProductToCart.rejected, (state, action) => {
+        state.loadingUpdate = false;
+        state.error = action.error.message;
+      })
+      .addCase(removeProductFromCart.pending, (state) => {
+        state.loadingRemove = true;
+        state.error = null;
+      })
+      .addCase(removeProductFromCart.fulfilled, (state, action) => {
+        state.products = action.payload.products;
+        state.totalPrice = action.payload.totalPrice;
+        state.totalCount = action.payload.totalCount;
+        state.loadingRemove = false;
+        state.error = null;
+      })
+      .addCase(removeProductFromCart.rejected, (state, action) => {
+        state.loadingRemove = false;
         state.error = action.error.message;
       });
   }
