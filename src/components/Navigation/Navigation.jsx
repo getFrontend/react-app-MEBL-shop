@@ -1,14 +1,8 @@
 import { Link } from "react-router-dom";
 import styles from "./Navigation.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { fetchCart } from "../../store/cart/cart.slice";
+import { useSelector } from "react-redux";
 
 function Navigation(props) {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
   const favoriteList = useSelector((state) => state.favorite.favoriteList);
   const totalCount = useSelector((state) => state.cart.totalCount);
 
