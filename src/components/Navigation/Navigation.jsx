@@ -5,13 +5,12 @@ import { useEffect } from "react";
 import { fetchCart } from "../../store/cart/cart.slice";
 
 function Navigation(props) {
-  const favoriteList = useSelector((state) => state.favorite.favoriteList);
-  const totalCount = useSelector((state) => state.cart.totalCount);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(fetchCart());
   }, [dispatch]);
+  const favoriteList = useSelector((state) => state.favorite.favoriteList);
+  const totalCount = useSelector((state) => state.cart.totalCount);
 
   const isActive = favoriteList?.length > 0;
 
