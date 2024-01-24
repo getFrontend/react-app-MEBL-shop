@@ -4,9 +4,9 @@ import { Container } from "../../views/Container/Container";
 import styles from "./Catalog.module.scss";
 import { useEffect } from "react";
 import { fetchCategories } from "../../store/categories/categories.slice";
-import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { Link, useLocation } from "react-router-dom";
+import { Skeleton } from "@chakra-ui/react";
 
 function Catalog() {
   // const defaultData = [
@@ -34,12 +34,6 @@ function Catalog() {
     }
   }, [dispatch, data.length]);
 
-  if (loading) {
-    return (
-      <Loader />
-    );
-  }
-
   if (errorCategories && statusCode !== 401) {
     const errorData = {
       path: "categories",
@@ -53,22 +47,26 @@ function Catalog() {
   return (
     <nav className={styles["catalog"]}>
       <Container className={styles["catalog__container"]}>
-        <ul className={styles["catalog__list"]}>
-          {data.map((item, index) => (
-            <li className={styles["catalog__item"]} key={index}>
-              <Link className={handleCategory(item) ?
-                `${styles["catalog__link"]} ${styles["catalog__link_active"]}` :
-                `${styles["catalog__link"]}`} to={`/category?category=${item}`}>
-                <img
-                  className={styles["catalog__icon"]}
-                  src={getCatalogIcon(index)}
-                  alt={`Иконка: ${item}`}
-                />
-                <span className={styles["catalog__text"]}>{item}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {(data && !loading) ?
+          (
+            <ul className={styles["catalog__list"]}>
+              {data.map((item, index) => (
+                <li className={styles["catalog__item"]} key={index}>
+                  <Link className={handleCategory(item) ?
+                    `${styles["catalog__link"]} ${styles["catalog__link_active"]}` :
+                    `${styles["catalog__link"]}`} to={`/category?category=${item}`}>
+                    <img
+                      className={styles["catalog__icon"]}
+                      src={getCatalogIcon(index)}
+                      alt={`Иконка: ${item}`}
+                    />
+                    <span className={styles["catalog__text"]}>{item}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) :
+          <Skeleton startColor='green.300' endColor='green.100' height="20px" />}
       </Container>
     </nav >
   );
