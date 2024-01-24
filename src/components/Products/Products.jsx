@@ -41,12 +41,6 @@ function Products(props) {
     );
   }
 
-  if (loading || !data) {
-    return (
-      <Loader />
-    );
-  }
-
   if (errorProducts && statusCode !== 401) {
     const errorData = {
       path: "products",
@@ -73,18 +67,24 @@ function Products(props) {
     <section className={styles["products"]}>
       <Container>
         <h2 className={`${styles["products__title"]}`}>{titleMain}</h2>
-        {isActive ?
-          (
-            <div className={styles["count"]}>Всего товаров:&nbsp;
-              <span>{pagination ? pagination.totalProducts : data?.length}</span>
-            </div>
-          ) :
-          (<></>)
-        }
-        <ProductList data={data} />
-        {pagination && (pagination.totalProducts > pagination.limit) ?
-          <Pagination pagination={pagination} /> :
-          <></>}
+        {(loading || !data) ? <Loader /> : (
+          <>
+            <>
+              {isActive ?
+                (
+                  <div className={styles["count"]}>Всего товаров:&nbsp;
+                    <span>{pagination ? pagination.totalProducts : data?.length}</span>
+                  </div>
+                ) :
+                (<></>)
+              }
+            </>
+            <ProductList data={data} />
+            {pagination && (pagination.totalProducts > pagination.limit) ?
+              <Pagination pagination={pagination} /> :
+              <></>}
+          </>
+        )}
       </Container>
     </section >
   );
