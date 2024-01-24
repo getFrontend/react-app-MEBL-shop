@@ -27,7 +27,9 @@ function ButtonRemoveFromCart({ id }) {
   };
 
   return (
-    <button className={isDisabled ? `${s.disabled}` : ""} onClick={handleCartClick}>Удалить</button>
+    <button
+      className={isDisabled ? `${s.removeBtn} ${s.disabled}` : s.removeBtn}
+      onClick={handleCartClick}>{isDisabled ? "Удалён!" : "Удалить"}</button>
   );
 }
 

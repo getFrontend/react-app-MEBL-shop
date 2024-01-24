@@ -1,4 +1,19 @@
+.removeBtn {
+  padding: 4px 8px;
+  background-color: var(--color-light);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 0.9em;
+  transition: border-color .3s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    border-color:var(--color-mebl);
+  }
+}
+
 .disabled {
-  color: var(--color-gray);
+  background-color: transparent;
+  color: var(--color-gray-dark);
   pointer-events: none;
 }
