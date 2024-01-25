@@ -1,16 +1,13 @@
 .page404 {
-  // position: absolute; 
-  // left:0;
-  // right:0;
-  // top:0;
-  // bottom:0;
-  padding-top: 1rem;
+  flex-grow: 1;
   display: grid;
   place-content: center;
   margin: 0 auto;
   padding-inline: 16px;
   text-align: center;
   color: orangered;
+  -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 .image {
@@ -26,10 +23,6 @@
   gap: 1rem;
   margin-bottom: 1rem;
   font-size: clamp(1.25rem, 0.6235rem + 3.1325vw, 4.5rem);
-  
-  & span {
-    opacity: .7;
-  }
 
   @media (min-width: 1120px) {
     gap: 2rem;
@@ -40,7 +33,7 @@
 
 .text {
   font-size: clamp(0.875rem, 0.6581rem + 1.0843vw, 2rem);
-  opacity: .4;
+  color: var(--color-dark);
   
   & p + p {
     padding-top: 20px;
@@ -80,5 +73,22 @@
   100% {
     -webkit-transform: translateY(-30px);
             transform: translateY(-30px);
+  }
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
