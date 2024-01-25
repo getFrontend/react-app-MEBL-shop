@@ -7,6 +7,7 @@ export const fetchProducts = createAsyncThunk(
     const state = thunkAPI.getState();
     const token = state.auth.accessToken;
     const LIMIT_DEFAULT = 12;
+    const LIMIT_PARAM = LIMIT_DEFAULT ? `&limit=${LIMIT_DEFAULT}` : "";
 
     const queryParams = new URLSearchParams();
     if (params) {
@@ -17,7 +18,7 @@ export const fetchProducts = createAsyncThunk(
       }
     }
 
-    const response = await fetch(`${API_URL_PRODUCTS}?${queryParams}&limit=${LIMIT_DEFAULT}`, {
+    const response = await fetch(`${API_URL_PRODUCTS}?${queryParams}${LIMIT_PARAM}`, {
       headers: {
         "Authorization": `Bearer ${token}`
       }
