@@ -1,92 +1,31 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Header } from "../views/Header/Header";
-import { Main } from "../views/Main/Main";
-import { Footer } from "../views/Footer/Footer";
-import Catalog from "../components/Catalog/Catalog";
-import Products from "../components/Products/Products";
-import Cart from "../components/Cart/Cart";
-import Card from "../components/Card/Card";
-import Page404 from "../components/Page404/Page404";
 import RemoveToken from "../components/RemoveToken/RemoveToken";
-import Favorites from "../components/Favorites/Favorites";
+import { Page } from "../views/Page/Page.jsx";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <Header />
-        <Main>
-          <Catalog />
-          <Products />
-        </Main>
-        <Footer />
-      </>
-    )
+    element: <Page pathname="home" />
   },
   {
     path: "/category",
-    element: (
-      <>
-        <Header />
-        <Main>
-          <Catalog />
-          <Products />
-        </Main>
-        <Footer />
-      </>
-    )
+    element: <Page pathname="category" />
   },
   {
     path: "/favorite",
-    element: (
-      <>
-        <Header />
-        <Main>
-          <Catalog />
-          <Favorites />
-        </Main>
-        <Footer />
-      </>
-    )
+    element: <Page pathname="favorite" />
   },
   {
     path: "/search",
-    element: (
-      <>
-        <Header />
-        <Main>
-          <Catalog />
-          <Products />
-        </Main>
-        <Footer />
-      </>
-    )
+    element: <Page pathname="search" />
   },
   {
     path: "/cart",
-    element: (
-      <>
-        <Header />
-        <Main>
-          <Cart />
-        </Main>
-        <Footer />
-      </>
-    )
+    element: <Page pathname="cart" />
   },
   {
     path: "/product/:productId",
-    element: (
-      <>
-        <Header />
-        <Main>
-          <Catalog />
-          <Card />
-        </Main>
-        <Footer />
-      </>
-    )
+    element: <Page pathname="product" />
   },
   {
     path: "/token-reset",
@@ -94,14 +33,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: (
-      <>
-        <Header />
-        <Main>
-          <Page404 />
-        </Main>
-        <Footer />
-      </>
-    )
+    element: <Page pathname="notfound" />
   }
 ]);
