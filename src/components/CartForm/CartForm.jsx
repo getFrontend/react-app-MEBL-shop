@@ -1,4 +1,7 @@
-import { Button, Collapse, useDisclosure } from "@chakra-ui/react";
+import {
+  Button, Collapse, Input, InputGroup, InputLeftAddon,
+  useDisclosure
+} from "@chakra-ui/react";
 import s from "./CartForm.module.scss";
 
 function CartForm() {
@@ -10,7 +13,13 @@ function CartForm() {
       <fieldset className={s.fieldsetInput}>
         <input className={s.input}
           type="text" name="name" required placeholder="Фамилия Имя Отчество" />
-        <input className={s.input} type="tel" name="phone" required placeholder="Телефон" />
+        <InputGroup>
+          <InputLeftAddon fontSize="14px">
+            +380
+          </InputLeftAddon>
+          <Input focusBorderColor="green.600"
+            className={s.input} type="tel" name="phone" required placeholder="Телефон" />
+        </InputGroup>
         <input className={s.input} type="email" name="email" required placeholder="E-mail" />
         <input className={s.input} type="text" name="address" placeholder="Адрес доставки" />
         <div className={s.collapse}>
