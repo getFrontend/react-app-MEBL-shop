@@ -9,8 +9,9 @@ import ProductList from "../ProductList/ProductList";
 import { useLocation, useMatch, useSearchParams } from "react-router-dom";
 import NotFoundProduct from "../NotFoundProduct/NotFoundProduct";
 import Pagination from "../Pagination/Pagination";
+import TitleMain from "../TitleMain/TitleMain";
 
-function Products(props) {
+function Products() {
   const dispatch = useDispatch();
   const [searchParam] = useSearchParams();
   const category = searchParam.get("category");
@@ -66,7 +67,7 @@ function Products(props) {
   return (
     <section className={styles["products"]}>
       <Container>
-        <h2 className={`${styles["products__title"]}`}>{titleMain}</h2>
+        <TitleMain className={styles["products__title"]} title={titleMain} />
         {(loading || !data) ? <Loader /> : (
           <>
             <>
