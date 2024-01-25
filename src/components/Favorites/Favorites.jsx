@@ -1,4 +1,4 @@
-import styles from "./Favorites.module.scss";
+import s from "./Favorites.module.scss";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/products/products.slice";
@@ -6,6 +6,7 @@ import Products from "../Products/Products";
 import { Container } from "../../views/Container/Container";
 import { getCatalogIcon } from "../../helpers/getCatalogIcon";
 import { useLocation, useSearchParams } from "react-router-dom";
+import TitleMain from "../TitleMain/TitleMain";
 
 function Favorites() {
   const dispatch = useDispatch();
@@ -19,26 +20,29 @@ function Favorites() {
     if (pathname === "/favorite") {
       dispatch(fetchProducts({ list, page }));
     }
-  }, [dispatch, pathname, page]);
+  }, [dispatch, pathname, list, page]);
 
-  const image = getCatalogIcon(1);
+  const image = getCatalogIcon(4);
 
   return <>
     {favoriteList?.length ? (
       <Products />
     ) : (
-      <Container>
-        <div className={styles["empty"]}>
-          <img className={styles["image"]} src={image} alt="" />
-          <div className={styles["wrapper"]}>
-            <h2 className={styles["title"]}>Ой... <span>а в Избранном пусто 😢</span></h2>
-            <div className={styles["text"]}>
-              <p>Добавьте какой-нибудь товар, нажав на сердечко <span>💚</span></p>
-              <p>И здесь появятся все понравившиеся вам товары <span>😊</span></p>
+      <section className={s.favoriteEmpty}>
+        <Container>
+          <TitleMain title="Избранное" />
+          <div className={s.empty}>
+            <img className={s.image} src={image} alt="Иконка с элементом мебели" />
+            <div className={s.wrapper}>
+              <div className={s.title}>Ой... а тут пусто <span>😢</span></div>
+              <div className={s.text}>
+                <p>Добавьте какой-нибудь товар, нажав на сердечко <span>💚</span></p>
+                <p>И здесь появятся все понравившиеся вам товары <span>😊</span></p>
+              </div>
             </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </section>
     )}
   </>;
 }
