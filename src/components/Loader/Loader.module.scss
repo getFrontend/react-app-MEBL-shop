@@ -1,5 +1,6 @@
 .loader-container {
   inset: 0;
+  flex-grow: 1;
   padding-block: 60px;
   display: grid;
   place-content: center;
@@ -26,19 +27,3 @@
 }
 
 @keyframes spinner {to{transform: rotate(1turn)}}
-
-// .loader {
-//   width: 5rem;
-//   height: 5rem;
-//   border: .4rem solid var(--color-mebl);
-//   border-left-color: transparent;
-//   border-right-color: transparent;
-//   border-radius: 50%;
-//   animation: .6s ease infinite alternate spinner-old;
-// }
-
-// @keyframes spinner-old {
-//   to {
-//     transform: rotate(1turn) scale(1.2);
-//   }
-// }
