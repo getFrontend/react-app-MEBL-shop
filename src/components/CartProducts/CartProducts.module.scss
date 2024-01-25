@@ -31,7 +31,14 @@
   }
 
   @media (min-width: 880px) {
-    max-width: 514px;
+    padding-right: 1.25rem;
+    // width: 95%;
+
+    &:hover {
+      overflow: hidden;
+      background-color:hsla(166, 94%, 94%, 0.5);
+      border-radius: 16px;
+    }
   }
 }
 
@@ -74,12 +81,18 @@
 .price {
   grid-area: price;
   color: var(--color-dark);
+  text-align: right;
 
   @media (min-width: 480px) {
     align-self: start;
     justify-self: end;
     font-size: 16px;
     padding-top: 12px;
+    text-align: left;
+  }
+  
+  @media(min-width: 1120px) {
+    font-size: 1.3em;
   }
 }
 
