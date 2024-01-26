@@ -1,5 +1,6 @@
 .removeBtn {
-  justify-self: right;
+  justify-self: center;
+  margin-top: 10px;
   max-width: 84px;
   padding: 4px 8px;
   background-color: var(--color-light);
@@ -8,9 +9,14 @@
   font-size: 0.9em;
   transition: border-color .3s ease-in-out;
 
+  @media(min-width: 580px) {
+    margin-top: 0;
+    justify-self: right;
+  }
+
   &:hover,
   &:focus-visible {
-    border-color:var(--color-mebl);
+    border-color: var(--color-mebl);
   }
 }
 
