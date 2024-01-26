@@ -1,44 +1,37 @@
-import { useDispatch, useSelector } from "react-redux";
 import { Container } from "../../views/Container/Container";
 import CartForm from "../CartForm/CartForm";
 import CartPlace from "../CartPlace/CartPlace";
 import CartProducts from "../CartProducts/CartProducts";
 import s from "./Cart.module.scss";
+import TitleMain from "../TitleMain/TitleMain";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchCart } from "../../store/cart/cart.slice";
-import Loader from "../Loader/Loader";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function Cart() {
   const dispatch = useDispatch();
   const {
     products,
-    loadingFetch,
-    error: errorCart
-  } = useSelector(state => state.cart);
+    totalPrice,
+    totalCount,
+    loadingRemove,
+    loadingAdd
+  } = useSelector((state) => state.cart);
 
   useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
-
-  if (loadingFetch) {
-    return <Loader />;
-  }
-
-  if (errorCart) {
-    return <ErrorMessage errorMsg={errorCart || ""} />;
-  }
+    if (!loadingAdd && !loadingRemove) {
+      dispatch(fetchCart());
+    }
+  }, [dispatch, loadingAdd, loadingRemove]);
 
   return (
     <section className={s.cart}>
-      {products ? (<>
-        <Container className={s.container}>
-          <h2 className={s.title}>Корзина</h2>
-          <CartProducts data={products} />
-          <CartPlace />
-          <CartForm />
-        </Container>
-      </>) : <Container>В корзине сейчас пусто...</Container>}
+      <Container className={s.container}>
+        <TitleMain className={s.title} title="Корзина" />
+        <CartProducts products={products} />
+        <CartPlace totalPrice={totalPrice} totalCount={totalCount} />
+        <CartForm />
+      </Container>
     </section >
   );
 }
