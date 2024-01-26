@@ -1,9 +1,11 @@
 .specs {
   margin-bottom: 24px;
+  font-size: 0.875rem;
 
   @media (min-width: 1120px) {
     padding-top: 1rem;
     margin-bottom: 3rem;
+    font-size: 1rem;
   }
 }
 
