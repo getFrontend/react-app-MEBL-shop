@@ -127,11 +127,10 @@ const cartSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchCart.fulfilled, (state, action) => {
+        state.loadingFetch = false;
         state.products = action.payload.products;
         state.totalPrice = action.payload.totalPrice;
         state.totalCount = action.payload.totalCount;
-        state.loadingFetch = false;
-        state.error = null;
       })
       .addCase(fetchCart.rejected, (state, action) => {
         state.loadingFetch = false;
@@ -142,10 +141,8 @@ const cartSlice = createSlice({
         state.error = null;
       })
       .addCase(addProductToCart.fulfilled, (state, action) => {
-        state.products = action.payload.products;
-        state.totalPrice = action.payload.totalPrice;
-        state.totalCount = action.payload.totalCount;
         state.loadingAdd = false;
+        state.totalCount = action.payload.totalCount;
         state.error = null;
       })
       .addCase(addProductToCart.rejected, (state, action) => {
@@ -157,10 +154,8 @@ const cartSlice = createSlice({
         state.error = null;
       })
       .addCase(updateProductToCart.fulfilled, (state, action) => {
-        state.products = action.payload.products;
-        state.totalPrice = action.payload.totalPrice;
-        state.totalCount = action.payload.totalCount;
         state.loadingUpdate = false;
+        state.totalCount = action.payload.totalCount;
         state.error = null;
       })
       .addCase(updateProductToCart.rejected, (state, action) => {
