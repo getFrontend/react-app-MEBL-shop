@@ -2,11 +2,9 @@ import s from "./ButtonRemoveFromCart.module.scss";
 import { useDispatch } from "react-redux";
 import { removeProductFromCart } from "../../store/cart/cart.slice";
 import { useToast } from "@chakra-ui/react";
-import { useState } from "react";
 
-function ButtonRemoveFromCart({ id }) {
+function ButtonRemoveFromCart({ id, text }) {
   const dispatch = useDispatch();
-  const [isDisabled, setIsDisabled] = useState(false);
 
   const toast = useToast();
   const removeCartToast = () => {
@@ -22,14 +20,13 @@ function ButtonRemoveFromCart({ id }) {
 
   const handleCartClick = () => {
     dispatch(removeProductFromCart(id));
-    setIsDisabled(true);
     removeCartToast();
   };
 
   return (
     <button
-      className={isDisabled ? `${s.removeBtn} ${s.disabled}` : s.removeBtn}
-      onClick={handleCartClick}>{isDisabled ? "Удалён!" : "Удалить"}</button>
+      className={s.removeBtn}
+      onClick={handleCartClick}>{text}</button>
   );
 }
 
