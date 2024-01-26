@@ -27,7 +27,7 @@ function CartPlace() {
           }&nbsp;<span>₴</span></div>
       </div>
       <div className={s.placeDelivery}>Доставка: 0&nbsp;₴</div>
-      <button className={s.placeBtn} type="submit" form="order">Оформить заказ</button>
+      <button className={s.placeBtnPro} type="submit" form="order">Оформить заказ</button>
     </div>
   );
 }
