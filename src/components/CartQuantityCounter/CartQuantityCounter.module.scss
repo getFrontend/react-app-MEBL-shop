@@ -1,0 +1,26 @@
+.productBtn {
+  width: 24px;
+  height: 24px;
+  line-height: 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  outline: none;
+
+  svg {
+    fill: var(--color-mebl-dark);
+
+    &:hover {
+      fill: var(--color-mebl);
+    }
+  }
+
+  &:focus-visible {
+    border-color: var(--color-mebl);
+  }
+}
+
+.productCount {
+  min-width: 14px;
+  text-align: center;
+  font-size: 1.3em;
+}
