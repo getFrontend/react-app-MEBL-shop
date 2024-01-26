@@ -34,8 +34,7 @@
   }
 
   @media (min-width: 880px) {
-    padding-right: 1.25rem;
-    // width: 95%;
+    padding: 0.7em 1.25rem 0.7rem 0.6rem;
 
     &:hover {
       overflow: hidden;
@@ -53,7 +52,9 @@
   transition: border-color .3s ease;
   outline: none;
 
-  &:hover,
+  &:hover {
+    filter: drop-shadow(0 .1em .4em var(--color-gray-dark));
+  }
   &:focus-visible {
     border-color: var(--color-mebl);
   }
@@ -62,16 +63,16 @@
 
 .img {
   border-radius: 16px;
-  transition: transform .3s ease;
+  transition: transform .3s ease-in-out;
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
   }
 }
 
 .titleProduct {
   grid-area: title;
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
 
@@ -102,7 +103,7 @@
 .article {
   grid-area: article;
   color: var(--color-dark-gray);
-  font-size: 9px;
+  font-size: 10px;
 
   @media (min-width: 480px) {
     font-size: 12px;

@@ -7,27 +7,26 @@
   gap: 16px;
 
   @media (min-width: 580px) {
-    grid-template-columns: 230px 230px 1fr;
+    grid-template-columns: max-content max-content auto;
     gap: 10px 16px;
     padding-top: 40px;
     padding-bottom: 40px;
   }
 
   @media (min-width: 880px) {
-    grid-template-columns: 196px 196px 1fr;
     gap: 24px 16px;
     padding-bottom: 0;
   }
 }
 
 .subtitle {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 700;
   margin-bottom: 16px;
   grid-column: 1/-1;
 
   @media (min-width: 480px) {
-    font-size: 20px;
+    font-size: 22px;
   }
 }
 
@@ -121,7 +120,8 @@
 }
 
 .legend {
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 700;
   margin-bottom: 12px;
 }
 
@@ -130,11 +130,16 @@
   display: flex;
   align-items: center;
   margin-bottom: 8px;
-  font-size: 12px;
-  line-height: 16px;
+  padding-left: 1rem;
+  font-size: 16px;
+  line-height: 24px;
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  @media(min-width: 920px) {
+    padding-left: 0;
   }
 }
 
