@@ -45,6 +45,10 @@
 html {
   position: relative;
   box-sizing: border-box;
+  -webkit-scroll-behavior: smooth;
+	-moz-scroll-behavior: smooth;
+	-ms-scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 * {
@@ -193,6 +197,20 @@ legend {
   animation: smoothScrollHeader 1s forwards;
 }
 
+.visible {
+  animation: 0.3s ease-in-out normal visibleUp;
+}
+
+.swing-top {
+	-webkit-animation: swingTop 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	        animation: swingTop 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+.fade-in {
+	-webkit-animation: fade-in .6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in .6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
 @keyframes smoothScrollHeader {
   0% {
     transform: translateY(-150px);
@@ -201,6 +219,67 @@ legend {
 
   100% {
     transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes visibleUp {
+  from {
+    opacity: 0;
+		transform: translate3d(0, -1rem, 0);
+  }
+  to {
+    opacity: 1;
+		transform: translate3d(0, 0, 0);
+  }
+}
+
+@-webkit-keyframes swingTop {
+  0% {
+    -webkit-transform: rotateX(-100deg);
+            transform: rotateX(-100deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 1;
+  }
+}
+@keyframes swingTop{
+  0% {
+    -webkit-transform: rotateX(-100deg);
+            transform: rotateX(-100deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
   }
 }

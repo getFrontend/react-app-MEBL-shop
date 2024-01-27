@@ -51,7 +51,7 @@ function Card() {
   }
 
   return (
-    <section className={styles["card"]}>
+    <section className={`${styles["card"]} fade-in`}>
       <Container className={styles["container"]}>
         {data ?
           (

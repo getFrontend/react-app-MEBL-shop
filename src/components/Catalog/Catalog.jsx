@@ -45,7 +45,7 @@ function Catalog() {
   }
 
   return (
-    <nav className={styles["catalog"]}>
+    <nav className={`${styles["catalog"]} fade-in`}>
       {(data && !loading) ?
         (
           <Container className={styles["catalog__container"]}>

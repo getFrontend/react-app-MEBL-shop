@@ -6,7 +6,7 @@ import ButtonAddToCart from "../ButtonAddToCart/ButtonAddToCart";
 
 function ProductCard({ id, images: [image], name: title, price }, ...props) {
   return (
-    <article className={styles["card"]}>
+    <article className={`${styles["card"]} fade-in`}>
       <Link className={styles["card__link"]} to={`/product/${id}`}>
         <img className={styles["card__image"]}
           src={`${API_URL}/${image}`} alt={title} />
