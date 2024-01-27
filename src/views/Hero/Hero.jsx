@@ -16,6 +16,13 @@ function Hero() {
 
   const { View } = useLottie(optionsHero);
 
+  const handleClickScroll = () => {
+    const scrollElement = document.getElementById("catalog");
+    if (scrollElement) {
+      scrollElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className={`${s.hero} fade-in`}>
       <Container className={s.container}>
@@ -27,7 +34,7 @@ function Hero() {
           <div className={s.slogan}>У нас находят мебель,<br />
             которую хочется купить!</div>
         </div>
-        <button className={s.scrollTo}>
+        <button onClick={handleClickScroll} className={s.scrollTo}>
           <Lottie
             animationData={scrollBtn} loop={true}
           />

@@ -12,7 +12,7 @@ export const Main = ({ path }) => {
     return (
       <>
         <Hero />
-        <Catalog />
+        <Catalog className="ptop95" />
         <Products />
       </>
     );

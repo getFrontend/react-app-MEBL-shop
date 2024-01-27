@@ -8,7 +8,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { Link, useLocation } from "react-router-dom";
 import { Skeleton } from "@chakra-ui/react";
 
-function Catalog() {
+function Catalog(props) {
   // const defaultData = [
   //   "Тумбы", "Стулья", "Столы", "Пуфы и банкетки", "Кровати", "Диваны", "Полки", "Стеллажи"
   // ];
@@ -45,7 +45,12 @@ function Catalog() {
   }
 
   return (
-    <nav className={`${styles["catalog"]} fade-in`}>
+    <nav
+      id="catalog"
+      className={props.className ?
+        `${styles["catalog"]} ${props.className} fade-in` :
+        `${styles["catalog"]} fade-in`
+      }>
       {(data && !loading) ?
         (
           <Container className={styles["catalog__container"]}>
