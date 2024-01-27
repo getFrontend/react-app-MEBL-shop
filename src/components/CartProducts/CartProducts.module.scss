@@ -87,6 +87,10 @@
   color: var(--color-dark);
   text-align: right;
 
+  & span {
+    font-size: 0.7em;
+  }
+
   @media (min-width: 480px) {
     align-self: start;
     justify-self: end;
@@ -97,7 +101,16 @@
   
   @media(min-width: 1120px) {
     font-size: 1.3em;
+
+    & span {
+      font-size: 0.65em;
+    }
   }
+}
+
+.currency {
+  color: var(--color-mebl-dark);
+  font-style: normal;
 }
 
 .article {

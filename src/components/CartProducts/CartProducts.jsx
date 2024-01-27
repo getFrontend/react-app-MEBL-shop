@@ -41,7 +41,12 @@ function CartProducts({ products }) {
                       alt={item.name || ""} />
                   </Link>
                   <h3 className={s.titleProduct}>{item.name || ""}</h3>
-                  <p className={s.price}>{(item.price || 0)?.toLocaleString()}&nbsp;₴</p>
+                  <div className={`${s.price} fade-in`}>
+                    <p>{((item.price * item.quantity) ||
+                      0)?.toLocaleString()}&nbsp;<i className={s.currency}>₴</i></p>
+                    <span>{(item.quantity > 1) ? `(${item.quantity} x ${item.price})` : ""}</span>
+                  </div>
+
                   <p className={s.article}>арт. {item.article || "0"}</p>
 
                   <CartQuantityCounter
