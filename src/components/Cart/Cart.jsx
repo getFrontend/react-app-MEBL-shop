@@ -19,6 +19,8 @@ function Cart() {
     loadingAdd
   } = useSelector((state) => state.cart);
 
+  useEffect(() => window.scrollTo(0, 0), []);
+
   useEffect(() => {
     if (!loadingAdd && !loadingRemove) {
       dispatch(fetchCart());
