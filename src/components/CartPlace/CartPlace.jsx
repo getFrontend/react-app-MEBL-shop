@@ -13,7 +13,7 @@ function CartPlace() {
         <div className={s.count}>
           <span>{getDeclOfNum(totalCount, titles)}</span> на сумму:
         </div>
-        <div className={s.price}>
+        <div className={`${s.price} ${"fade-in"}`}>
           {
             (loading ?
               (<Spinner
