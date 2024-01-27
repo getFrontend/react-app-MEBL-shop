@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.11.0",
     "@reduxjs/toolkit": "^2.0.1",
     "framer-motion": "^10.18.0",
+    "lottie-react": "^2.4.0",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
