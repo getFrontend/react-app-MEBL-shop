@@ -1,10 +1,10 @@
+import s from "./CartProducts.module.scss";
 import { Link } from "react-router-dom";
 import { API_URL } from "../../store/api";
-import s from "./CartProducts.module.scss";
 import ButtonRemoveFromCart from "../ButtonRemoveFromCart/ButtonRemoveFromCart";
 import CartQuantityCounter from "../CartQuantityCounter/CartQuantityCounter";
 import { useSelector } from "react-redux";
-// import { useSelector } from "react-redux";
+import emptyCart from "../../assets/emptycart.svg";
 // import { Center, Spinner } from "@chakra-ui/react";
 
 function CartProducts({ products }) {
@@ -29,7 +29,15 @@ function CartProducts({ products }) {
   return (
     <>
       {(products?.length === 0) && !loading ?
-        (<div className={s.products}>В корзине пока пусто..</div>) :
+        (<>
+          <div className={`${s.products} fade-in`}>
+            <p><span className={s.customer}>Уважаемый покупатель</span>, в вашей корзине сейчас пусто..</p>
+            <p>Пожалуйста перейдите в <Link className={s.link2} to={"/category?category=%D0%94%D0%B8%D0%B2%D0%B0%D0%BD%D1%8B"}>каталог</Link>, и выберите какой-нибудь товар.</p>
+            <div className={s.empty}>
+              <img src={emptyCart} alt="Пустая корзина" />
+            </div>
+          </div>
+        </>) :
         (
           <ul className={s.products}>
             {

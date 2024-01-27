@@ -10,6 +10,12 @@
   }
 }
 
+// .empty {}
+
+.customer {
+  color: var(--color-mebl-dark);
+}
+
 .product {
   display: grid;
   align-items: center;
@@ -58,7 +64,14 @@
   &:focus-visible {
     border-color: var(--color-mebl);
   }
+}
 
+.link2 {
+  color: var(--color-mebl) !important;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .img {
