@@ -52,12 +52,12 @@
 
 .placeDelivery {
   color: var(--color-gray-dark);
-  font-size: 9px;
+  font-size: 14px;
   margin-bottom: 18px;
 
-  @media (min-width: 480px) {
-    font-size: 12px;
-    margin-bottom: 32px;
+  @media (min-width: 920px) {
+    font-size: 16px;
+    margin-bottom: 2.5rem;
   }
 }
 

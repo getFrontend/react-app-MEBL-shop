@@ -77,8 +77,9 @@
   font-weight: 400;
 
   @media (min-width: 480px) {
+    align-self: start;
     font-size: 16px;
-    padding-top: 12px;
+    padding-top: 14px;
   }
 }
 
