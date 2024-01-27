@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { getDeclOfNum, titles } from "../../helpers/getDeclOfNum";
 import s from "./CartPlace.module.scss";
 import { Spinner } from "@chakra-ui/react";
+import CartDelivery from "../CartDelivery/CartDelivery";
 
 function CartPlace() {
   const { totalPrice, totalCount, loadingFetch: loading } = useSelector((state) => state.cart);
@@ -26,7 +27,7 @@ function CartPlace() {
               totalPrice.toLocaleString())
           }&nbsp;<span>₴</span></div>
       </div>
-      <div className={s.placeDelivery}>Доставка: 0&nbsp;₴</div>
+      <CartDelivery className={s.placeDelivery} totalPrice={totalPrice} />
       <button className={s.placeBtnPro} type="submit" form="order">Оформить заказ</button>
     </div>
   );
