@@ -1,0 +1,51 @@
+.delivery {
+  display: grid;
+
+  @media(min-width: 1120px){    
+    grid-template-columns: 1fr max-content;
+  }
+}
+
+.deliveryPrice {
+  margin-bottom: 10px;
+}
+
+.button {
+  align-self: start;
+  padding-block: 10px;
+
+  @media (min-width: 580px) {
+    justify-self: start;
+  }
+}
+
+.content {
+  padding-top: 20px;
+
+  & h4 {
+    padding-block: 1.5rem;
+    font-weight: 700;
+  }
+
+  & ul {
+    margin-left: 2rem;
+    padding-block: 1rem;
+    list-style: disc;
+    // line-height: 1.4;
+
+    & li {
+      padding-bottom: 10px;
+    }
+  }
+}
+
+.animation {
+  justify-self: center;
+  max-width: 80%;
+  overflow: hidden;
+  height: 150px;
+  
+  @media (min-width: 1120px) {
+    grid-column: 1/-1;
+  }
+}
