@@ -16,11 +16,13 @@ function Favorites() {
   const list = favoriteList.join(",");
   const page = searchParam.get("page");
 
+  useEffect(() => window.scrollTo(0, 0), []);
+
   useEffect(() => {
     if (pathname === "/favorite") {
       dispatch(fetchProducts({ list, page }));
     }
-  }, [dispatch, pathname, list, page]);
+  }, [dispatch, pathname, page]);
 
   const image = getCatalogIcon(4);
 
