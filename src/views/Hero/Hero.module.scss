@@ -1,0 +1,64 @@
+.hero {
+  height: calc(100dvh - 95px);
+  background-color: var(--color-light);
+  overflow: hidden;
+  display: none;
+
+  @media(min-width: 1120px) {
+    display: block;
+  }
+}
+
+.container {
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.animation {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: .5;
+}
+
+.content {
+  flex-grow: 1;
+  position: relative;
+  z-index: 2;
+  align-self: flex-start;
+  max-width: 750px;
+  padding-top: 12rem;
+  padding-left: 2rem;
+  color: var(--color-mebl-dark);
+  font-weight: 700;
+}
+
+.title {
+  padding-bottom: 3rem;
+  font-size: clamp(1.375rem, 0.6521rem + 3.6145vw, 5.125rem);
+}
+
+.mebl {
+  color: var(--color-mebl);
+}
+
+.slogan {
+  font-family: var(--font-secondary);
+  font-size: clamp(1.125rem, 0.7154rem + 2.0482vw, 3.25rem);
+  color: var(--color-dark);
+  text-shadow: 2px 2px 4px rgba(255,255,255, .8);
+}
+
+.scrollTo {
+  margin-bottom: 2rem;
+  width: 80px;
+  height: auto;
+}
