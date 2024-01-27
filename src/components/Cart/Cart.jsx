@@ -33,7 +33,7 @@ function Cart() {
       <section className={s.cart}>
         <Container className={s.container}>
           <TitleMain className={s.title} title="Корзина" />
-          <CartProducts products={products} />
+          <CartProducts />
           <CartPlace totalPrice={totalPrice} totalCount={totalCount} />
           <CartForm />
         </Container>

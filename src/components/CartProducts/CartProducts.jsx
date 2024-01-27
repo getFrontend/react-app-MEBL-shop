@@ -5,26 +5,27 @@ import ButtonRemoveFromCart from "../ButtonRemoveFromCart/ButtonRemoveFromCart";
 import CartQuantityCounter from "../CartQuantityCounter/CartQuantityCounter";
 import { useSelector } from "react-redux";
 import emptyCart from "../../assets/emptycart.svg";
-// import { Center, Spinner } from "@chakra-ui/react";
+import { Center, Spinner } from "@chakra-ui/react";
 
-function CartProducts({ products }) {
+function CartProducts() {
   const {
+    products,
     loadingFetch: loading
   } = useSelector((state) => state.cart);
 
-  // if (loading) {
-  //   return (
-  //     <Center className={s.products}>
-  //       <Spinner
-  //         thickness='4px'
-  //         speed='0.65s'
-  //         emptyColor='gray.200'
-  //         color='green.300'
-  //         size='xl'
-  //       />
-  //     </Center>
-  //   );
-  // }
+  if (products?.length === 0 && loading) {
+    return (
+      <Center className={s.products}>
+        <Spinner
+          thickness='4px'
+          speed='0.65s'
+          emptyColor='gray.200'
+          color='green.300'
+          size='xl'
+        />
+      </Center>
+    );
+  }
 
   return (
     <>
