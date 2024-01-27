@@ -187,8 +187,11 @@ legend {
 
 /* Utils */
 .ptop95 {
-  padding-top: 95px !important;
+  @media screen and (min-width: 1120px) {
+    padding-top: 95px !important;
+  }
 }
+
 .sticky {
   position: fixed;
   top: 0;
