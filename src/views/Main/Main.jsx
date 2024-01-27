@@ -5,6 +5,7 @@ import Cart from "../../components/Cart/Cart";
 import Card from "../../components/Card/Card";
 import Page404 from "../../components/Page404/Page404";
 import Hero from "../Hero/Hero";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 export const Main = ({ path }) => {
   if (path === "home") {
@@ -21,6 +22,7 @@ export const Main = ({ path }) => {
     return (
       <>
         <Catalog />
+        <Breadcrumbs />
         <Products />
       </>
     );
@@ -30,6 +32,7 @@ export const Main = ({ path }) => {
     return (
       <>
         <Catalog />
+        <Breadcrumbs />
         <Favorites />
       </>
     );
@@ -47,6 +50,7 @@ export const Main = ({ path }) => {
     return (
       <>
         <Catalog />
+        <Breadcrumbs />
         <Card />
       </>
     );

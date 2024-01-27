@@ -7,6 +7,7 @@ import TitleMain from "../TitleMain/TitleMain";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchCart } from "../../store/cart/cart.slice";
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -25,14 +26,17 @@ function Cart() {
   }, [dispatch, loadingAdd, loadingRemove]);
 
   return (
-    <section className={s.cart}>
-      <Container className={s.container}>
-        <TitleMain className={s.title} title="Корзина" />
-        <CartProducts products={products} />
-        <CartPlace totalPrice={totalPrice} totalCount={totalCount} />
-        <CartForm />
-      </Container>
-    </section >
+    <>
+      <Breadcrumbs />
+      <section className={s.cart}>
+        <Container className={s.container}>
+          <TitleMain className={s.title} title="Корзина" />
+          <CartProducts products={products} />
+          <CartPlace totalPrice={totalPrice} totalCount={totalCount} />
+          <CartForm />
+        </Container>
+      </section >
+    </>
   );
 }
 
