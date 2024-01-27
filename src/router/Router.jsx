@@ -12,6 +12,10 @@ export const router = createBrowserRouter([
     element: <Page pathname="category" />
   },
   {
+    path: "/product/:productId",
+    element: <Page pathname="product" />
+  },
+  {
     path: "/favorite",
     element: <Page pathname="favorite" />
   },
@@ -24,8 +28,8 @@ export const router = createBrowserRouter([
     element: <Page pathname="cart" />
   },
   {
-    path: "/product/:productId",
-    element: <Page pathname="product" />
+    path: "/order",
+    element: <Page pathname="order" />
   },
   {
     path: "/token-reset",

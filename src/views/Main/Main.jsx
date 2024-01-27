@@ -6,6 +6,7 @@ import Card from "../../components/Card/Card";
 import Page404 from "../../components/Page404/Page404";
 import Hero from "../Hero/Hero";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
+import Order from "../Order/Order";
 
 export const Main = ({ path }) => {
   if (path === "home") {
@@ -42,6 +43,14 @@ export const Main = ({ path }) => {
     return (
       <>
         <Cart />
+      </>
+    );
+  }
+
+  if (path === "order") {
+    return (
+      <>
+        <Order />
       </>
     );
   }
