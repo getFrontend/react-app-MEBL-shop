@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
     element: <Page pathname="cart" />
   },
   {
-    path: "/order",
+    path: "/order/:orderId",
     element: <Page pathname="order" />
   },
   {
