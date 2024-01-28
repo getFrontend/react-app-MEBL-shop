@@ -12,9 +12,6 @@ import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 function Cart() {
   const dispatch = useDispatch();
   const {
-    products,
-    totalPrice,
-    totalCount,
     loadingRemove,
     loadingAdd
   } = useSelector((state) => state.cart);
@@ -34,7 +31,7 @@ function Cart() {
         <Container className={s.container}>
           <TitleMain className={s.title} title="Корзина" />
           <CartProducts />
-          <CartPlace totalPrice={totalPrice} totalCount={totalCount} />
+          <CartPlace />
           <CartForm />
         </Container>
       </section >
