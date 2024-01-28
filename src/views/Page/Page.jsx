@@ -36,7 +36,7 @@ export const Page = ({ pathname }) => {
 
   return (
     <>
-      <header className={`header fade-in ${sticky.isSticky ? "sticky" : ""}`} ref={headerRef} >
+      <header className={`header ${sticky.isSticky ? "sticky" : "fade-in"}`} ref={headerRef} >
         <Header />
       </header>
       <main className={sticky.isSticky ? `${s.main} ${s.paddingTop}` : s.main}>
