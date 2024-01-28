@@ -5,16 +5,24 @@ import { Spinner } from "@chakra-ui/react";
 import CartDelivery from "../CartDelivery/CartDelivery";
 
 function CartPlace() {
-  const { totalPrice, totalCount, loadingFetch: loading } = useSelector((state) => state.cart);
+  const { products, totalPrice, totalCount, loadingFetch: loading } = useSelector((state) => state.cart);
+
+  const countAllQuantity = (data) => data.reduce((sum, item) => sum + item.quantity, 0);
+  const allQuantity = countAllQuantity(products);
+
+  const items = ["единици", "единицы", "единиц"];
 
   return (
     <div className={s.place}>
       <h3 className={s.subtitle}>Оформление заказа:</h3>
       <div className={s.placeInfo}>
         <div className={s.count}>
-          <span>{getDeclOfNum(totalCount, titles)}</span> на сумму:
+          <p><span>{getDeclOfNum(totalCount, titles)}</span> на сумму: </p>
+          {allQuantity > totalCount ? (
+            <p className={`${s.countSmall} fade-in`}>(Всего: {getDeclOfNum(allQuantity, items)} мебели)</p>
+          ) : <></>}
         </div>
-        <div className={`${s.price} ${"fade-in"}`}>
+        <div className={`${s.price} fade-in`}>
           {
             (loading ?
               (<Spinner
@@ -22,7 +30,7 @@ function CartPlace() {
                 speed='0.5s'
                 emptyColor='gray.200'
                 color='green.300'
-                size={{ xs: "sm", lg: "md" }}
+                size={{ xs: "xs", sm: "sm", md: "sm", lg: "md" }}
               />) :
               totalPrice.toLocaleString())
           }&nbsp;<span>₴</span></div>
