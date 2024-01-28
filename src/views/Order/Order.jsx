@@ -121,7 +121,7 @@ function Order() {
                   colorScheme='green'
                   fontWeight='normal'
                   size={{ xs: "sm", sm: "sm", md: "md", lg: "md" }}>
-                  <Link to="/">На главную</Link>
+                  <Link className={s.link} to="/">На главную</Link>
                 </Button>
               </Tooltip>
             </>
