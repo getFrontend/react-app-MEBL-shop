@@ -7,29 +7,28 @@ import s from "./CartForm.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchOrder } from "../../store/order/order.slice";
-import { useState } from "react";
-import { fetchCart } from "../../store/cart/cart.slice";
+import { useEffect, useState } from "react";
+// import { fetchCart } from "../../store/cart/cart.slice";
 
 function CartForm() {
   const { isOpen, onToggle } = useDisclosure();
-  const { orderId, loadingFetch } = useSelector((state) => state.order);
   const [isChecked, setIsChecked] = useState(true);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const orderStatus = useSelector((state) => state.order);
+
+  useEffect(() => {
+    if (orderStatus.success) {
+      navigate(`/order/${orderStatus.orderId}`);
+    }
+  }, [orderStatus, navigate]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Идёт отправка заказа");
     const data = Array.from(event.target.elements)
       .filter((input) => input.name)
       .reduce((obj, input) => Object.assign(obj, { [input.name]: input.value }), {});
     dispatch(fetchOrder(data));
-    if (orderId && !loadingFetch) {
-      dispatch(fetchCart());
-      navigate(`/order/${orderId}`);
-      event.target.reset();
-    }
   };
 
   const handleCheck = () => {
@@ -59,7 +58,6 @@ function CartForm() {
             fontSize='md' fontWeight='normal' textAlign='center'>
             <Button mb="10px" fontSize="14px" fontWeight="normal"
               onClick={onToggle}>Добавить комментарий</Button>
-
           </Tooltip>
           <Collapse in={isOpen} animateOpacity>
             <textarea
