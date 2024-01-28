@@ -4,19 +4,48 @@ import {
   useDisclosure
 } from "@chakra-ui/react";
 import s from "./CartForm.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { fetchOrder } from "../../store/order/order.slice";
+import { useState } from "react";
+import { fetchCart } from "../../store/cart/cart.slice";
 
 function CartForm() {
   const { isOpen, onToggle } = useDisclosure();
+  const { orderId, loadingFetch } = useSelector((state) => state.order);
+  const [isChecked, setIsChecked] = useState(true);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Идёт отправка заказа");
+    const data = Array.from(event.target.elements)
+      .filter((input) => input.name)
+      .reduce((obj, input) => Object.assign(obj, { [input.name]: input.value }), {});
+    dispatch(fetchOrder(data));
+    if (orderId && !loadingFetch) {
+      dispatch(fetchCart());
+      navigate(`/order/${orderId}`);
+      event.target.reset();
+    }
+  };
+
+  const handleCheck = () => {
+    setIsChecked(!isChecked);
+  };
 
   return (
-    <form className={s.form} id="order" method="POST">
+    <form onSubmit={handleSubmit}
+      className={s.form} id="order" method="POST">
       <h3 className={s.subtitle}>Данные для доставки</h3>
       <fieldset className={s.fieldsetInput}>
         <input className={s.input}
           type="text" name="name" required placeholder="Фамилия Имя Отчество" />
         <InputGroup>
           <InputLeftAddon fontSize="14px">
-            +380
+            +38
           </InputLeftAddon>
           <Input focusBorderColor="green.600"
             className={s.input} type="tel" name="phone" required placeholder="Телефон" />
@@ -45,6 +74,8 @@ function CartForm() {
         <legend className={s.legend}>Доставка</legend>
         <label className={s.radio}>
           <input className={s.radioInput}
+            onChange={handleCheck}
+            checked={isChecked}
             type="radio" name="deliveryType" required value="delivery" />
           Доставка
         </label>
@@ -64,6 +95,8 @@ function CartForm() {
         </label>
         <label className={s.radio}>
           <input className={s.radioInput}
+            onChange={handleCheck}
+            checked={isChecked}
             type="radio" name="paymentType" required value="cash" />
           Наличными при получении
         </label>
