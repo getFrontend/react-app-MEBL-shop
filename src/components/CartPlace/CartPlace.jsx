@@ -19,7 +19,7 @@ function CartPlace() {
         <div className={s.count}>
           <p><span>{getDeclOfNum(totalCount, titles)}</span> на сумму: </p>
           {allQuantity > totalCount ? (
-            <p className={`${s.countSmall} fade-in`}>(Всего: {getDeclOfNum(allQuantity, items)} мебели)</p>
+            <p className={`${s.countSmall} fade-in`}>(всего: {getDeclOfNum(allQuantity, items)} мебели)</p>
           ) : <></>}
         </div>
         <div className={`${s.price} fade-in`}>
