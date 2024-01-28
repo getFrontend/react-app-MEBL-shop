@@ -27,7 +27,7 @@ export const fetchOrder = createAsyncThunk(
         throw new Error("Ошибка! Не удалось отправить заказ.");
       }
       const data = await response.json();
-      return data;
+      return data.orderId;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -36,18 +36,15 @@ export const fetchOrder = createAsyncThunk(
 
 export const getOrder = createAsyncThunk(
   "order/getOrder",
-  async (id, { getState, rejectWithValue }) => {
+  async (orderId, { getState, rejectWithValue }) => {
     const state = getState();
     const token = state.auth.accessToken;
 
     try {
-      const response = await fetch(`${API_URL}api/orders/${id}`, {
-        method: "GET",
+      const response = await fetch(`${API_URL}api/orders/${orderId}`, {
         headers: {
-          "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify(id)
       });
       if (!response.ok) {
         throw new Error("Ошибка! Не удалось загрузить информацию про заказ.");
@@ -60,8 +57,9 @@ export const getOrder = createAsyncThunk(
 );
 
 const initialState = {
-  orderData: [],
-  orderId: {},
+  orderData: null,
+  orderId: null,
+  success: false,
   loadingFetch: false,
   loadingGetOrder: false,
   error: null
@@ -75,15 +73,19 @@ const orderSlice = createSlice({
     builder
       .addCase(fetchOrder.pending, (state) => {
         state.loadingFetch = true;
+        state.success = false;
         state.error = null;
       })
       .addCase(fetchOrder.fulfilled, (state, action) => {
         state.loadingFetch = false;
-        state.orderId = action.payload.orderId;
+        state.success = true;
+        state.error = false;
+        state.orderId = action.payload;
       })
       .addCase(fetchOrder.rejected, (state, action) => {
         state.loadingFetch = false;
-        state.error = action.error.message;
+        state.error = action.payload;
+        state.success = false;
       })
       .addCase(getOrder.pending, (state) => {
         state.loadingGetOrder = true;
