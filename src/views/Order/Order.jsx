@@ -63,6 +63,8 @@ function Order() {
     dispatch(fetchCart());
   }, [dispatch, orderId]);
 
+  useEffect(() => window.scrollTo(0, 0), []);
+
   if (errorOrder) {
     return <ErrorMessage />;
   }
