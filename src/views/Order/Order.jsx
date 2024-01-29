@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Container } from "../Container/Container";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getOrder } from "../../store/order/order.slice";
+import { getOrder, resetSuccess } from "../../store/order/order.slice";
 import Loader from "../../components/Loader/Loader";
 import { Button, Collapse, Tooltip, useDisclosure } from "@chakra-ui/react";
 import TitleMain from "../../components/TitleMain/TitleMain";
@@ -69,6 +69,10 @@ function Order() {
   useEffect(() => {
     dispatch(getOrder(orderId));
     dispatch(fetchCart());
+
+    return () => {
+      dispatch(resetSuccess());
+    };
   }, [dispatch, orderId]);
 
   useEffect(() => window.scrollTo(0, 0), []);
