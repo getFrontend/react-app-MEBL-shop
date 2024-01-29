@@ -1,0 +1,103 @@
+.list {
+  padding-block: 1rem 2rem;
+  padding-inline: 1rem;
+  display: grid;
+  gap: 10px;
+  justify-content: space-evenly;
+  
+  @media (min-width: 580px) {
+    grid-template-columns: repeat(auto-fit, 140px);
+  }
+
+  @media (min-width: 820px) {
+    grid-template-columns: repeat(auto-fit, 180px);
+  }
+}
+
+.listOne {
+  justify-content: left;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 12px;
+
+  &:hover .link {
+    filter: drop-shadow(0 .1em .2em var(--color-gray-dark));
+  }
+
+  &:hover .image {
+    transform: scale(1.05);
+  }
+
+  @media(min-width: 580px) {
+    gap: 19px;
+  }
+}
+
+.link {
+  overflow: hidden;
+  border-radius: 16px;
+  transition: filter .3s ease-in-out;
+
+  &:focus-visible {
+    outline-color: var(--color-mebl);
+  }
+}
+
+.image {
+  $imageHeight: 120;
+  $imageWidth: 140;
+
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: calc($imageWidth/20) / calc($imageHeight/20);
+  transition: transform .3s ease-in-out;
+
+  @media (min-width: 580px) {
+    $imageHeight: 200;
+    $imageWidth: 230;
+    aspect-ratio: calc($imageWidth/20) / calc($imageHeight/20);
+  }
+
+  @media (min-width: 820px) {
+    $imageHeight: 250;
+    $imageWidth: 302;
+    aspect-ratio: calc($imageWidth/20) / calc($imageHeight/20);
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 10px;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 400;
+
+  @media(min-width: 580px) {
+    font-size: 16px;
+  }
+}
+
+.itemLink {
+
+  &:focus-visible {
+    outline-color: var(--color-mebl);
+  }
+}
+
+.price {
+  font-size: 16px;
+
+  @media(min-width: 580px) {
+    margin-top: -4px;
+    font-size: 20px;
+  }
+}
