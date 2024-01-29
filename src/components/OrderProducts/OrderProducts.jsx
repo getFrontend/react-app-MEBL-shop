@@ -15,26 +15,19 @@ function OrderProducts({ productList }) {
   }, [dispatch, list]);
 
   return (
-    <ul className={(data?.length === 1) ?
-      `${s.list} ${s.listOne}` : s.list}>
+    <ul className={s.products}>
       {data?.map(item => (
-        <li className={s.item} key={item.id}>
-          <article className={`${s.card} fade-in`}>
-            <Link className={s.link} to={`/product/${item.id}`}>
-              <img className={s.image}
-                src={`${API_URL}/${item.images[0]}`} alt={item.name} />
-            </Link>
-            <div className={s.info}>
-              <h3 className={s.title}>
-                <Link className={s.itemLink} to={`/product/${item.id}`}>
-                  {item.name}
-                </Link>
-              </h3>
-              <span className={s.price}>
-                {parseInt(item.price).toLocaleString()}&nbsp;₴
-              </span>
-            </div>
-          </article>
+        <li className={`${s.product} fade-in`} key={item.id}>
+          <Link className={s.link} to={`/product/${item.id}`}>
+            <img className={s.img}
+              src={`${API_URL}/${item.images[0]}`}
+              alt={item.name || ""} />
+          </Link>
+          <h3 className={s.titleProduct}>{item.name || ""}</h3>
+          <div className={`${s.price} fade-in`}>
+            <p>{item.price.toLocaleString()}&nbsp;<i className={s.currency}>₴</i></p>
+          </div>
+          <p className={s.article}>арт. {item.article || "0"}</p>
         </li>
       ))}
     </ul>
