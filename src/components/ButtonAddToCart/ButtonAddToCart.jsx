@@ -1,5 +1,5 @@
 import s from "./ButtonAddToCart.module.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "../../store/cart/cart.slice";
 import { useToast } from "@chakra-ui/react";
 import { useState } from "react";
@@ -7,6 +7,7 @@ import { useState } from "react";
 function ButtonAddToCart({ className, id }) {
   const dispatch = useDispatch();
   const [isInCart, setIsInCart] = useState(false);
+  const { products } = useSelector((state) => state.cart);
 
   const toast = useToast();
   const addCartToast = () => {
@@ -19,6 +20,8 @@ function ButtonAddToCart({ className, id }) {
     });
   };
 
+  const isCart = products.find(item => item.id === id);
+
   const handleCartClick = () => {
     dispatch(addProductToCart({ productId: id, quantity: 1 }));
     setIsInCart(true);
@@ -28,12 +31,12 @@ function ButtonAddToCart({ className, id }) {
   return (
     <button
       onClick={handleCartClick}
-      className={isInCart ?
-      `${className} ${s.disabled}` :
-      `${className} `}
+      className={isInCart || isCart ?
+        `${className} ${s.disabled}` :
+        `${className} `}
       data-id={id}
       aria-label="Добавить в корзину">
-      {isInCart ? "В корзине" : "В корзину"}
+      {isInCart || isCart ? "В корзине" : "В корзину"}
     </button>
   );
 }
