@@ -105,11 +105,19 @@ function Order() {
                   </tr>
                   <tr className={s.table__row}>
                     <td className={s.table__field}>Способ оплаты</td>
-                    <td className={s.table__value}>{orderData.paymentType}</td>
+                    <td className={s.table__value}>
+                      {orderData.paymentType === "card" ?
+                        "Картой" :
+                        "Наличными при получении"}
+                    </td>
                   </tr>
                   <tr className={s.table__row}>
                     <td className={s.table__field}>Способ получения</td>
-                    <td className={s.table__value}>{orderData.deliveryType}</td>
+                    <td className={s.table__value}>
+                      {orderData.deliveryType === "delivery" ?
+                        "Доставка" :
+                        "Самовывоз"}
+                    </td>
                   </tr>
                 </tbody>
               </table>
