@@ -1,7 +1,8 @@
 import {
   Button, Collapse, Input, InputGroup, InputLeftAddon,
   Tooltip,
-  useDisclosure
+  useDisclosure,
+  useToast
 } from "@chakra-ui/react";
 import s from "./CartForm.module.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,11 +24,24 @@ function CartForm() {
     }
   }, [orderStatus, navigate]);
 
+  const toast = useToast();
+  const orderToast = () => {
+    toast({
+      description: "Ваш заказ добавлен в обработку",
+      position: "top",
+      status: "success",
+      variant: "solid",
+      duration: 2000,
+      isClosable: true,
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = Array.from(event.target.elements)
       .filter((input) => input.name)
       .reduce((obj, input) => Object.assign(obj, { [input.name]: input.value }), {});
+    orderToast();
     dispatch(fetchOrder(data));
   };
 
