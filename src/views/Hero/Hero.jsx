@@ -34,7 +34,7 @@ function Hero() {
           <div className={s.slogan}>У нас находят мебель,<br />
             которую хочется купить!</div>
         </div>
-        <button onClick={handleClickScroll} className={s.scrollTo}>
+        <button onClick={handleClickScroll} className={s.scrollTo} aria-label="Прокрутить страницу вниз">
           <Lottie
             animationData={scrollBtn} loop={true}
           />
