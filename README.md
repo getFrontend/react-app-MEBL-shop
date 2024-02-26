@@ -8,7 +8,9 @@ Online furniture shop made on React framework as part of the training marathon t
 
 
 ✔ Mobile-first workflow
+
 ✔ [Fully valid code](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmebl-shop.vercel.app%2F)
+
 ✔ HTML Semantic Tags
 
 The project uses **React** and **React DOM** to create components and control the visual display:
